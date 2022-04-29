@@ -3,7 +3,7 @@ import template from "./Tile.html";
 import { sendEvent } from "../../utils/events";
 import { Position } from "../../types";
 
-export type TileType = "grass";
+export type TileType = "grass" | "dirt";
 
 export abstract class Tile extends BaseElement {
   position: Position;

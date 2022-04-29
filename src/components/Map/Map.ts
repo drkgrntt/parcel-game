@@ -2,6 +2,7 @@ import template from "./Map.html";
 import { BaseElement } from "../../abstracts/BaseElement/BaseElement";
 import { Grass } from "../Grass/Grass";
 import { Tile } from "../../abstracts/Tile/Tile";
+import { Dirt } from "../Dirt/Dirt";
 
 export class Map extends BaseElement {
   // Full map size, this can be bigger than the visible area
@@ -36,7 +37,7 @@ export class Map extends BaseElement {
     const map = this.shadowRoot.querySelector(".map");
     for (let y = 0; y < this.#height; y++) {
       for (let x = 0; x < this.#width; x++) {
-        const tile = new Grass([x, y]);
+        const tile = new Dirt([x, y]);
         this.#tiles.push(tile);
         map.appendChild(tile);
       }
