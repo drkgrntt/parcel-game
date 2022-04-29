@@ -19,5 +19,6 @@
   left: calc(var(--x) * var(--tile-size));
 
   /* Speed */
-  transition: 0.3s;
+  --speed: 3s;
+  transition: calc(var(--speed) / 10) linear;
 }
