@@ -1,4 +1,4 @@
-import { BaseElement, TEMPLATE_SET_EVENT } from "../BaseElement";
+import { BaseElement } from "../BaseElement";
 import template from "./GameText.html";
 
 export class GameText extends BaseElement {
@@ -26,7 +26,6 @@ export class GameText extends BaseElement {
   }
 
   #updateText() {
-    console.log("in update text");
     if (!this.#textSlot) {
       return;
     }
@@ -50,12 +49,7 @@ export class GameText extends BaseElement {
     }, 50);
   }
 
-  connectedCallback() {
-    console.log("game text connected");
-  }
-
   templateSetCallback(): void {
-    console.log("template set");
     this.#textSlot = this.shadowRoot.querySelector("slot");
     this.#updateText();
   }

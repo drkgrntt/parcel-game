@@ -1,3 +1,5 @@
+import { getTemplate } from "../utils/templates";
+
 export const TEMPLATE_SET_EVENT = "template-set";
 
 export abstract class BaseElement extends HTMLElement {
@@ -34,14 +36,12 @@ export abstract class BaseElement extends HTMLElement {
   }
 
   set template(value: string) {
-    fetch(value)
-      .then((res) => res.text())
-      .then((html: string) => {
-        this.#template = document.createElement("template");
-        this.#template.innerHTML = html;
-        this.shadowRoot.appendChild(this.#template.content.cloneNode(true));
-        setTimeout(() => this.dispatchEvent(new Event(TEMPLATE_SET_EVENT)));
-      });
+    getTemplate(value).then((html) => {
+      this.#template = document.createElement("template");
+      this.#template.innerHTML = html;
+      this.shadowRoot.appendChild(this.#template.content.cloneNode(true));
+      setTimeout(() => this.dispatchEvent(new Event(TEMPLATE_SET_EVENT)));
+    });
   }
 
   templateSetCallback(): void {}

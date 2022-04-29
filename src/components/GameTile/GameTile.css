@@ -1,0 +1,6 @@
+.tile {
+  --color: green;
+  background-color: var(--color);
+  width: var(--tile-size);
+  height: var(--tile-size);
+}

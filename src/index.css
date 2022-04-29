@@ -2,6 +2,8 @@
   --black: black;
   --dark-grey: rgba(60, 60, 60, 0.6);
   --white: white;
+
+  --tile-size: 1rem;
 }
 
 * {
@@ -11,5 +13,5 @@
 }
 
 body {
-  transform: translateY(-1rem);
+  /* transform: translateY(-1rem); */
 }

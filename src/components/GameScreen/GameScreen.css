@@ -1,7 +1,15 @@
 .game-screen {
+  --width: 40;
+  --height: 55;
+
   background-color: var(--black);
-  height: 500px;
-  width: 700px;
+  height: calc(var(--width) * var(--tile-size));
+  width: calc(var(--height) * var(--tile-size));
   position: relative;
   box-sizing: border-box;
+}
+
+.map {
+  display: flex;
+  flex-wrap: wrap;
 }
