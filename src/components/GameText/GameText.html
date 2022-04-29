@@ -1,0 +1,28 @@
+<style>
+  .text {
+    color: var(--white);
+    font-family: "Courier New", Courier, monospace;
+    text-align: center;
+  }
+
+  .text-container {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 70%;
+    box-sizing: border-box;
+
+    background-color: var(--dark-grey);
+    height: 6rem;
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+  }
+</style>
+
+<div class="text-container">
+  <p class="text"><slot></slot></p>
+</div>

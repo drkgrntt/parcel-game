@@ -1,0 +1,15 @@
+:root {
+  --black: black;
+  --dark-grey: rgba(60, 60, 60, 0.6);
+  --white: white;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  transform: translateY(-1rem);
+}
