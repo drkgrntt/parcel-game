@@ -1,0 +1,7 @@
+.game-screen {
+  background-color: var(--black);
+  height: 500px;
+  width: 700px;
+  position: relative;
+  box-sizing: border-box;
+}
