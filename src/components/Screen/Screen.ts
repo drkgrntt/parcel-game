@@ -28,7 +28,7 @@ export class Screen extends BaseElement {
     const map = this.shadowRoot.querySelector(".map");
     for (let y = 0; y < this.#height; y++) {
       for (let x = 0; x < this.#width; x++) {
-        const tile = new Grass(x, y);
+        const tile = new Grass([x, y]);
         map.appendChild(tile);
       }
     }

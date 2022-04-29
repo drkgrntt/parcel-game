@@ -1,6 +1,7 @@
 import { BaseElement } from "../BaseElement";
 import template from "./Pawn.html";
 import { PawnSpeed, Position } from "../../types";
+import { Tile } from "../Tile/Tile";
 
 export class Pawn extends BaseElement {
   #destination: Position = [];
@@ -49,8 +50,8 @@ export class Pawn extends BaseElement {
     this.speed = this.speed; // Set the CSS
   }
 
-  handleTileSelection(event: CustomEvent) {
-    this.destination = [event.detail.x, event.detail.y];
+  handleTileSelection(event: CustomEvent<Tile>) {
+    this.destination = event.detail.position;
   }
 
   #getNextTile(): Position {

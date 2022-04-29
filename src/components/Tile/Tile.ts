@@ -1,19 +1,18 @@
 import { BaseElement } from "../BaseElement";
 import template from "./Tile.html";
 import { sendEvent } from "../../utils/events";
+import { Position } from "../../types";
 
 export type TileType = "grass";
 
 export class Tile extends BaseElement {
-  x: number;
-  y: number;
+  position: Position;
   type: TileType;
 
-  constructor(x: number, y: number, type: TileType) {
+  constructor(position: Position, type: TileType) {
     super();
     this.template = template;
-    this.x = x;
-    this.y = y;
+    this.position = position;
     this.type = type;
   }
 
