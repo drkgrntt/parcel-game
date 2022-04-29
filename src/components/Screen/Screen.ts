@@ -1,7 +1,7 @@
 import template from "./Screen.html";
 import { BaseElement } from "../BaseElement";
 import { Text } from "../Text/Text";
-import { Tile } from "../Tile/Tile";
+import { Grass } from "../Grass/Grass";
 
 const loremIpsum = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus rutrum porttitor venenatis. Aenean volutpat dolor vitae lacus facilisis vestibulum. Duis tempus nec ex eu egestas. Mauris metus arcu, suscipit in lectus ac, blandit malesuada orci. Duis commodo tortor mi, pellentesque facilisis sem volutpat vel. Proin aliquam sem diam. Aenean at nunc tincidunt, pulvinar diam nec, porta tortor. Sed lacinia nec lorem et consequat. Morbi cursus id enim sed facilisis. Duis ac lectus sit amet metus consectetur ullamcorper. Integer lobortis ligula quis tortor vulputate convallis.
 Donec viverra enim faucibus, condimentum est nec, semper enim. Mauris ut metus ante. Vivamus volutpat dolor ut quam tincidunt, quis venenatis leo cursus. Vivamus cursus nulla ac justo egestas, eu vehicula magna vehicula. Interdum et malesuada fames ac ante ipsum primis in faucibus. Aliquam sed turpis ac leo convallis varius at ac libero. Vestibulum mollis nunc vitae gravida suscipit. Nulla quis volutpat erat. Cras interdum est felis, vel consequat leo facilisis ac. Ut neque lacus, semper eget arcu sit amet, dignissim eleifend sem. Maecenas hendrerit porttitor dolor ut porttitor. In et ipsum suscipit, euismod magna eu, efficitur est.
@@ -28,7 +28,7 @@ export class Screen extends BaseElement {
     const map = this.shadowRoot.querySelector(".map");
     for (let y = 0; y < this.#height; y++) {
       for (let x = 0; x < this.#width; x++) {
-        const tile = new Tile(x, y);
+        const tile = new Grass(x, y);
         map.appendChild(tile);
       }
     }
