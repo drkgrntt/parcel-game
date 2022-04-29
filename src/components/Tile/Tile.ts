@@ -34,7 +34,6 @@ export class Tile extends BaseElement {
   }
 
   handleClick(event: MouseEvent) {
-    log("clicked!", event);
     sendEvent("tile-selected", this);
   }
 }

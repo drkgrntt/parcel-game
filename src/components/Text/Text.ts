@@ -51,7 +51,6 @@ export class Text extends BaseElement {
       this.#disappear();
       return;
     }
-    log(text);
 
     this.#animateText(text ?? "");
   }

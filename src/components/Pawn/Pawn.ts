@@ -47,11 +47,6 @@ export class Pawn extends BaseElement {
   templateSetCallback(): void {
     this.position = this.position; // Set the CSS
     this.speed = this.speed; // Set the CSS
-
-    this.createEventListener(
-      "tile-selected",
-      this.handleTileSelection.bind(this)
-    );
   }
 
   handleTileSelection(event: CustomEvent) {
