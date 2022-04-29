@@ -1,7 +1,7 @@
-import { BaseElement } from "../BaseElement";
+import { BaseElement } from "../../abstracts/BaseElement/BaseElement";
 import template from "./Pawn.html";
 import { PawnSpeed, Position } from "../../types";
-import { Tile } from "../Tile/Tile";
+import { Tile } from "../../abstracts/Tile/Tile";
 import { sendEvent } from "../../utils/events";
 
 export class Pawn extends BaseElement {

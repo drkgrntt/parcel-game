@@ -1,5 +1,5 @@
 import template from "./Screen.html";
-import { BaseElement } from "../BaseElement";
+import { BaseElement } from "../../abstracts/BaseElement/BaseElement";
 import { Text } from "../Text/Text";
 import { Grass } from "../Grass/Grass";
 

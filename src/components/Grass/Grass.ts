@@ -1,6 +1,6 @@
 import { Position } from "../../types";
 import { getRandom } from "../../utils";
-import { Tile } from "../Tile/Tile";
+import { Tile } from "../../abstracts/Tile/Tile";
 
 export class Grass extends Tile {
   static #COLORS = ["#0c0", "#0e0", "#0d0"];

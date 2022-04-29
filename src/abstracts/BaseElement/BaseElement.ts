@@ -1,4 +1,4 @@
-import { getTemplate } from "../utils/templates";
+import { getTemplate } from "../../utils/templates";
 
 export const TEMPLATE_SET_EVENT = "template-set";
 

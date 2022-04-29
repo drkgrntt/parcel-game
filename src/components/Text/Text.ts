@@ -1,5 +1,5 @@
 import { log } from "../../utils/logger";
-import { BaseElement } from "../BaseElement";
+import { BaseElement } from "../../abstracts/BaseElement/BaseElement";
 import template from "./Text.html";
 
 export class Text extends BaseElement {

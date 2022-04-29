@@ -1,11 +1,11 @@
-import { BaseElement } from "../BaseElement";
+import { BaseElement } from "../BaseElement/BaseElement";
 import template from "./Tile.html";
 import { sendEvent } from "../../utils/events";
 import { Position } from "../../types";
 
 export type TileType = "grass";
 
-export class Tile extends BaseElement {
+export abstract class Tile extends BaseElement {
   position: Position;
   type: TileType;
   holding: BaseElement[] = [];
@@ -45,5 +45,3 @@ export class Tile extends BaseElement {
     sendEvent("tile-selected", this);
   }
 }
-
-customElements.get("game-tile") ?? customElements.define("game-tile", Tile);

@@ -1,7 +1,7 @@
 import template from "./Map.html";
-import { BaseElement } from "../BaseElement";
+import { BaseElement } from "../../abstracts/BaseElement/BaseElement";
 import { Grass } from "../Grass/Grass";
-import { Tile } from "../Tile/Tile";
+import { Tile } from "../../abstracts/Tile/Tile";
 
 export class Map extends BaseElement {
   // Full map size, this can be bigger than the visible area
