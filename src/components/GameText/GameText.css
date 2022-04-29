@@ -12,10 +12,13 @@
   width: 70%;
   box-sizing: border-box;
 
+  /* Visibility */
+  --display: none;
+  display: var(--display);
+
   background-color: var(--dark-grey);
   height: 6rem;
   padding: 2rem;
-  display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 1rem;

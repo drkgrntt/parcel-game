@@ -26,15 +26,31 @@ export class GameText extends BaseElement {
     this.#updateText();
   }
 
+  #disappear() {
+    this.shadowRoot
+      .querySelector<HTMLDivElement>(".text-container")
+      ?.style.setProperty("--display", "none");
+  }
+
+  #appear() {
+    this.shadowRoot
+      .querySelector<HTMLDivElement>(".text-container")
+      ?.style.setProperty("--display", "flex");
+  }
+
   #updateText() {
     if (!this.#textSlot) {
       return;
     }
+    this.#appear();
 
     const text = this.#textQueue.shift();
     this.#textSlot.textContent = "";
 
-    if (!text) return;
+    if (!text) {
+      this.#disappear();
+      return;
+    }
     log(text);
 
     this.#animateText(text ?? "");
