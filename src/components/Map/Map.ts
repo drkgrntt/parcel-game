@@ -3,6 +3,9 @@ import { BaseElement } from "../../abstracts/BaseElement/BaseElement";
 import { Grass } from "../Grass/Grass";
 import { Tile } from "../../abstracts/Tile/Tile";
 import { Dirt } from "../Dirt/Dirt";
+import { getRandom } from "../../utils";
+
+const tilesTypes: typeof Tile[] = [Grass, Dirt];
 
 export class Map extends BaseElement {
   // Full map size, this can be bigger than the visible area
@@ -37,7 +40,8 @@ export class Map extends BaseElement {
     const map = this.shadowRoot.querySelector(".map");
     for (let y = 0; y < this.#height; y++) {
       for (let x = 0; x < this.#width; x++) {
-        const tile = new Dirt([x, y]);
+        const TileType = getRandom(tilesTypes);
+        const tile = new TileType([x, y], undefined);
         this.#tiles.push(tile);
         map.appendChild(tile);
       }

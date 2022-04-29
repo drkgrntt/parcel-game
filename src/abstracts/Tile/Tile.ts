@@ -5,7 +5,7 @@ import { Position } from "../../types";
 
 export type TileType = "grass" | "dirt";
 
-export abstract class Tile extends BaseElement {
+export class Tile extends BaseElement {
   position: Position;
   type: TileType;
   holding: BaseElement[] = [];
