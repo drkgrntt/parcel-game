@@ -1,3 +1,4 @@
+import { log } from "../../utils/logger";
 import { BaseElement } from "../BaseElement";
 import template from "./GameText.html";
 
@@ -34,6 +35,7 @@ export class GameText extends BaseElement {
     this.#textSlot.textContent = "";
 
     if (!text) return;
+    log(text);
 
     this.#animateText(text ?? "");
   }
