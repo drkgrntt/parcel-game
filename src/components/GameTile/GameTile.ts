@@ -30,7 +30,7 @@ export class GameTile extends BaseElement {
   }
 
   setClickHandler() {
-    this.createEventListener("click", this.handleClick.bind(this), this);
+    this.createEventListener("mouseup", this.handleClick.bind(this), this);
   }
 
   handleClick(event: MouseEvent) {
