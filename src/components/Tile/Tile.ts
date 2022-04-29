@@ -1,12 +1,12 @@
 import { log } from "../../utils/logger";
 import { getRandom } from "../../utils";
 import { BaseElement } from "../BaseElement";
-import template from "./GameTile.html";
+import template from "./Tile.html";
 import { sendEvent } from "../../utils/events";
 
 const GREENS = ["#0c0", "#0e0", "#0d0"];
 
-export class GameTile extends BaseElement {
+export class Tile extends BaseElement {
   x: number;
   y: number;
 
@@ -39,4 +39,4 @@ export class GameTile extends BaseElement {
   }
 }
 
-customElements.get("game-tile") ?? customElements.define("game-tile", GameTile);
+customElements.get("game-tile") ?? customElements.define("game-tile", Tile);

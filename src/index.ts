@@ -1,4 +1,4 @@
-import "./components/GameScreen/GameScreen";
-import "./components/GameText/GameText";
-import "./components/GameTile/GameTile";
-import "./components/GamePawn/GamePawn";
+import "./components/Screen/Screen";
+import "./components/Text/Text";
+import "./components/Tile/Tile";
+import "./components/Pawn/Pawn";

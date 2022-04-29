@@ -1,8 +1,8 @@
 import { log } from "../../utils/logger";
 import { BaseElement } from "../BaseElement";
-import template from "./GameText.html";
+import template from "./Text.html";
 
-export class GameText extends BaseElement {
+export class Text extends BaseElement {
   #textSlot: HTMLSlotElement;
   #textQueue: string[] = [];
 
@@ -73,4 +73,4 @@ export class GameText extends BaseElement {
   }
 }
 
-customElements.get("game-text") ?? customElements.define("game-text", GameText);
+customElements.get("game-text") ?? customElements.define("game-text", Text);

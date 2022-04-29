@@ -1,8 +1,8 @@
 import { BaseElement } from "../BaseElement";
-import template from "./GamePawn.html";
+import template from "./Pawn.html";
 import { PawnSpeed, Position } from "../../types";
 
-export class GamePawn extends BaseElement {
+export class Pawn extends BaseElement {
   #destination: Position = [];
   #position: Position = [10, 10];
   #speed: PawnSpeed = 8;
@@ -95,4 +95,4 @@ export class GamePawn extends BaseElement {
   }
 }
 
-customElements.get("game-pawn") ?? customElements.define("game-pawn", GamePawn);
+customElements.get("game-pawn") ?? customElements.define("game-pawn", Pawn);
