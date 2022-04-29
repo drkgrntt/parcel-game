@@ -2,7 +2,7 @@
   "name": "parcel",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
     "dev": "parcel src/index.html",
     "build": "parcel build src/index.ts"
