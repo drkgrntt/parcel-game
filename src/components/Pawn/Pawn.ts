@@ -2,6 +2,7 @@ import { BaseElement } from "../BaseElement";
 import template from "./Pawn.html";
 import { PawnSpeed, Position } from "../../types";
 import { Tile } from "../Tile/Tile";
+import { sendEvent } from "../../utils/events";
 
 export class Pawn extends BaseElement {
   #destination: Position = [];
@@ -54,7 +55,7 @@ export class Pawn extends BaseElement {
     this.destination = event.detail.position;
   }
 
-  #getNextTile(): Position {
+  #getNextPosition(): Position {
     const [posX, posY] = this.position;
     const [destX, destY] = this.#destination;
     let nextX = posX;
@@ -76,13 +77,15 @@ export class Pawn extends BaseElement {
   }
 
   move() {
-    const [x, y] = this.#getNextTile();
+    const [x, y] = this.#getNextPosition();
     const [posX, posY] = this.position;
     if (x === posX && y === posY) {
       this.#destination = [];
       return;
     }
 
+    sendEvent(`exiting-position-${posX}-${posY}`, this);
+    sendEvent(`entering-position-${x}-${y}`, this);
     this.position = [x, y];
     this.#movementTimeout = setTimeout(
       () => this.move(),
