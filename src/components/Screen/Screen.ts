@@ -10,6 +10,7 @@ Donec sed magna neque. Nunc suscipit accumsan quam. Curabitur iaculis purus at a
 Pellentesque vitae porttitor velit. Nunc bibendum magna vel ante ultrices, a elementum urna euismod. Nullam non pulvinar nulla. Nunc in consequat risus. Etiam sollicitudin blandit aliquet. Curabitur diam erat, interdum in ullamcorper vel, hendrerit quis metus. Quisque at ante nibh. Quisque quam dolor, gravida in viverra eu, pharetra in tortor. Phasellus eget nulla nisl. Praesent id risus rutrum, tincidunt turpis porttitor, malesuada dolor. Duis rhoncus, lectus sit amet vehicula vulputate, ipsum lorem ornare felis, commodo condimentum dui odio in felis. Fusce eu nisl molestie, auctor nisl id, sodales diam. Aliquam dictum purus in gravida aliquam. Curabitur in nunc ut libero pharetra placerat. Pellentesque mattis sapien vel ex condimentum, sit amet vestibulum odio commodo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.`;
 
 export class Screen extends BaseElement {
+  // Visible area
   #height = 40;
   #width = 55;
 
@@ -17,21 +18,23 @@ export class Screen extends BaseElement {
     super();
     this.template = template;
   }
-
-  templateSetCallback(): void {
-    this.setTiles();
-    const text = this.shadowRoot.querySelector<Text>("game-text");
-    text.text = loremIpsum;
+  set height(value: number) {
+    this.#height = value;
+    const screen = this.shadowRoot.querySelector<HTMLDivElement>(".screen");
+    screen?.style.setProperty("--height", value.toString());
   }
 
-  setTiles(): void {
-    const map = this.shadowRoot.querySelector(".map");
-    for (let y = 0; y < this.#height; y++) {
-      for (let x = 0; x < this.#width; x++) {
-        const tile = new Grass([x, y]);
-        map.appendChild(tile);
-      }
-    }
+  set width(value: number) {
+    this.#width = value;
+    const screen = this.shadowRoot.querySelector<HTMLDivElement>(".screen");
+    screen?.style.setProperty("--width", value.toString());
+  }
+
+  templateSetCallback(): void {
+    this.height = this.#height;
+    this.width = this.#width;
+    const text = this.shadowRoot.querySelector<Text>("game-text");
+    text.text = loremIpsum;
   }
 }
 
