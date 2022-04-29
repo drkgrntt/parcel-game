@@ -1,10 +1,10 @@
 .game-screen {
-  --width: 40;
-  --height: 55;
+  --height: 40;
+  --width: 55;
 
   background-color: var(--black);
-  height: calc(var(--width) * var(--tile-size));
-  width: calc(var(--height) * var(--tile-size));
+  height: calc(var(--height) * var(--tile-size));
+  width: calc(var(--width) * var(--tile-size));
   position: relative;
   box-sizing: border-box;
 }

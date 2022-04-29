@@ -25,11 +25,12 @@ export class GameScreen extends BaseElement {
   }
 
   setTiles(): void {
-    const total = this.#height * this.#width;
     const map = this.shadowRoot.querySelector(".map");
-    for (let i = 0; i < total; i++) {
-      const tile = new GameTile();
-      map.appendChild(tile);
+    for (let y = 0; y < this.#height; y++) {
+      for (let x = 0; x < this.#width; x++) {
+        const tile = new GameTile(x, y);
+        map.appendChild(tile);
+      }
     }
   }
 }
