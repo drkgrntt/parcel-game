@@ -10,5 +10,4 @@ export class Player extends Pawn {
   }
 }
 
-customElements.get("game-player") ??
-  customElements.define("game-player", Player);
+customElements.get("g-player") ?? customElements.define("g-player", Player);

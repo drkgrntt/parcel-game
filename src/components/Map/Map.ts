@@ -47,4 +47,4 @@ export class Map extends BaseElement {
   }
 }
 
-customElements.get("game-map") ?? customElements.define("game-map", Map);
+customElements.get("g-map") ?? customElements.define("g-map", Map);

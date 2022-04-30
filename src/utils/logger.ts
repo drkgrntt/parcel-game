@@ -6,7 +6,7 @@ interface LogDetail {
   level: LogLevel;
 }
 
-const LOG_EVENT = "game-log";
+const LOG_EVENT = "g-log";
 
 export const log = (...data: LogData) => {
   dispatchEvent(

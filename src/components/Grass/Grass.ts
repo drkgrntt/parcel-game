@@ -22,4 +22,4 @@ export class Grass extends Tile {
   }
 }
 
-customElements.get("game-grass") ?? customElements.define("game-grass", Grass);
+customElements.get("g-grass") ?? customElements.define("g-grass", Grass);

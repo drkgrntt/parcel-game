@@ -94,4 +94,4 @@ export class Pawn extends BaseElement {
   }
 }
 
-customElements.get("game-pawn") ?? customElements.define("game-pawn", Pawn);
+customElements.get("g-pawn") ?? customElements.define("g-pawn", Pawn);

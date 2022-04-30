@@ -72,4 +72,4 @@ export class Text extends BaseElement {
   }
 }
 
-customElements.get("game-text") ?? customElements.define("game-text", Text);
+customElements.get("g-text") ?? customElements.define("g-text", Text);

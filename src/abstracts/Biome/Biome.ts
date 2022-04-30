@@ -63,4 +63,4 @@ export class Biome extends BaseElement {
   }
 }
 
-customElements.get("game-biome") ?? customElements.define("game-biome", Biome);
+customElements.get("g-biome") ?? customElements.define("g-biome", Biome);

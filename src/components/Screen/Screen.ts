@@ -33,10 +33,9 @@ export class Screen extends BaseElement {
   templateSetCallback(): void {
     this.height = this.#height;
     this.width = this.#width;
-    const text = this.shadowRoot.querySelector<Text>("game-text");
+    const text = this.shadowRoot.querySelector<Text>("g-text");
     text.text = loremIpsum;
   }
 }
 
-customElements.get("game-screen") ??
-  customElements.define("game-screen", Screen);
+customElements.get("g-screen") ?? customElements.define("g-screen", Screen);

@@ -22,4 +22,4 @@ export class Dirt extends Tile {
   }
 }
 
-customElements.get("game-dirt") ?? customElements.define("game-dirt", Dirt);
+customElements.get("g-dirt") ?? customElements.define("g-dirt", Dirt);
