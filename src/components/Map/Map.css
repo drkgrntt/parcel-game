@@ -1,4 +1,12 @@
 .map {
+  --height: 0;
+  --width: 0;
+
+  height: calc(var(--scale) * var(--height) * var(--tile-size));
+  width: calc(var(--scale) * var(--width) * var(--tile-size));
+
   display: flex;
   flex-wrap: wrap;
+
+  position: relative;
 }

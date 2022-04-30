@@ -1,22 +1,23 @@
 .pawn {
   --color: crimson;
   background-color: var(--color);
-  width: calc(0.7 * var(--tile-size));
-  height: calc(0.7 * var(--tile-size));
+  width: calc(0.7 * var(--tile-size) * var(--scale));
+  height: calc(0.7 * var(--tile-size) * var(--scale));
   border-radius: 100rem;
+  z-index: 2;
 
   /* Center of the tile */
   transform: translate(
-    calc(0.15 * var(--tile-size)),
-    calc(0.15 * var(--tile-size))
+    calc(0.15 * var(--tile-size) * var(--scale)),
+    calc(0.15 * var(--tile-size) * var(--scale))
   );
 
   /* Position */
   position: absolute;
   --x: 0;
   --y: 0;
-  top: calc(var(--y) * var(--tile-size));
-  left: calc(var(--x) * var(--tile-size));
+  top: calc(var(--y) * var(--tile-size) * var(--scale));
+  left: calc(var(--x) * var(--tile-size) * var(--scale));
 
   /* Speed */
   --speed: 3s;

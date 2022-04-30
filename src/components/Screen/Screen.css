@@ -3,8 +3,9 @@
   --width: 0;
 
   background-color: var(--black);
-  height: calc(var(--height) * var(--tile-size));
-  width: calc(var(--width) * var(--tile-size));
+  height: calc(var(--height) * var(--tile-size) + 1rem);
+  width: calc(var(--width) * var(--tile-size) + 1rem);
   position: relative;
   box-sizing: border-box;
+  overflow: scroll;
 }

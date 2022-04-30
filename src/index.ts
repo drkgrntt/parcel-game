@@ -1,7 +1,9 @@
+import "./components/Controls/Controls";
 import "./components/Screen/Screen";
 import "./components/Map/Map";
 import "./components/Text/Text";
 import "./abstracts/Tile/Tile";
+import "./abstracts/Biome/Biome";
 import "./components/Grass/Grass";
 import "./components/Dirt/Dirt";
 import "./components/Pawn/Pawn";
