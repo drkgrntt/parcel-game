@@ -4,6 +4,7 @@ import { sendEvent } from "../../utils/events";
 import { Position } from "../../types";
 
 export type TileType = "grass" | "dirt";
+export const TILE_TYPES: TileType[] = ["grass", "dirt"];
 
 export class Tile extends BaseElement {
   position: Position;

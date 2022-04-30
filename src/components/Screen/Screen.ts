@@ -12,7 +12,7 @@ Pellentesque vitae porttitor velit. Nunc bibendum magna vel ante ultrices, a ele
 export class Screen extends BaseElement {
   // Visible area
   #height = 40;
-  #width = 55;
+  #width = 60;
 
   constructor() {
     super();

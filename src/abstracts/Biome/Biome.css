@@ -1,0 +1,10 @@
+.biome {
+  --height: 0;
+  --width: 0;
+
+  height: calc(var(--height) * var(--tile-size));
+  width: calc(var(--width) * var(--tile-size));
+
+  display: flex;
+  flex-wrap: wrap;
+}
