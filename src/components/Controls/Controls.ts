@@ -2,9 +2,8 @@ import { BaseElement } from "../../abstracts/BaseElement/BaseElement";
 import template from "./Controls.html";
 
 class Controls extends BaseElement {
-  #minScale = 0.5;
-  #maxScale = 5;
-  #scale = 1;
+  #scales = [0.4, 0.6, 0.8, 1, 1.5, 2, 3, 4];
+  #scaleIndex = this.#scales.indexOf(1);
 
   constructor() {
     super();
@@ -31,20 +30,20 @@ class Controls extends BaseElement {
   }
 
   #zoomIn(event: MouseEvent) {
-    if (this.#scale >= this.#maxScale) return;
-    this.#scale *= 1.2;
+    if (this.#scaleIndex >= this.#scales.length - 1) return;
+    this.#scaleIndex++;
     document.documentElement.style.setProperty(
       "--scale",
-      this.#scale.toString()
+      this.#scales[this.#scaleIndex].toString()
     );
   }
 
   #zoomOut(event: MouseEvent) {
-    if (this.#scale <= this.#minScale) return;
-    this.#scale *= 0.8;
+    if (this.#scaleIndex <= 0) return;
+    this.#scaleIndex--;
     document.documentElement.style.setProperty(
       "--scale",
-      this.#scale.toString()
+      this.#scales[this.#scaleIndex].toString()
     );
   }
 }
