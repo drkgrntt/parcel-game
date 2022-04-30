@@ -3,11 +3,12 @@ import { getRandom } from "../../utils";
 import { Tile } from "../../abstracts/Tile/Tile";
 import { Biome } from "../../abstracts/Biome/Biome";
 
-export class Grass extends Tile {
-  static #COLORS = ["#0c0", "#0e0", "#0d0"];
+export class Water extends Tile {
+  static #COLORS = ["#00f", "#03d", "#30d"];
 
   constructor(biome: Biome, position: Position) {
-    super(biome, position, "grass");
+    super(biome, position, "water");
+    this.isPassable = false;
   }
 
   templateSetCallback(): void {
@@ -16,11 +17,11 @@ export class Grass extends Tile {
   }
 
   setColor() {
-    const color = getRandom(Grass.#COLORS);
+    const color = getRandom(Water.#COLORS);
     this.shadowRoot
       .querySelector<HTMLDivElement>(".tile")
       .style.setProperty("--color", color);
   }
 }
 
-customElements.get("g-grass") ?? customElements.define("g-grass", Grass);
+customElements.get("g-water") ?? customElements.define("g-water", Water);

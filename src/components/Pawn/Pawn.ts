@@ -9,6 +9,7 @@ export class Pawn extends BaseElement {
   #position: Position = [10, 10];
   #speed: PawnSpeed = 8;
   #movementTimeout: number;
+  #tile: Tile;
 
   constructor() {
     super();

@@ -1,12 +1,13 @@
 import { Position } from "../../types";
 import { getRandom } from "../../utils";
 import { Tile } from "../../abstracts/Tile/Tile";
+import { Biome } from "../../abstracts/Biome/Biome";
 
 export class Dirt extends Tile {
   static #COLORS = ["#462e1a", "#503715", "#743e0c", "#552f12", "#46250a"];
 
-  constructor(position: Position) {
-    super(position, "dirt");
+  constructor(biome: Biome, position: Position) {
+    super(biome, position, "dirt");
   }
 
   templateSetCallback(): void {
