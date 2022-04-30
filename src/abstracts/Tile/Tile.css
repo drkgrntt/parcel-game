@@ -4,4 +4,6 @@
 
   width: calc(var(--scale) * var(--tile-size));
   height: calc(var(--scale) * var(--tile-size));
+
+  transition: var(--transition);
 }

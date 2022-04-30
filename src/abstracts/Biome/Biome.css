@@ -4,6 +4,7 @@
 
   height: calc(var(--scale) * var(--height) * var(--tile-size));
   width: calc(var(--scale) * var(--width) * var(--tile-size));
+  transition: var(--transition);
 
   display: flex;
   flex-wrap: wrap;

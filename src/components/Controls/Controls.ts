@@ -2,7 +2,7 @@ import { BaseElement } from "../../abstracts/BaseElement/BaseElement";
 import template from "./Controls.html";
 
 class Controls extends BaseElement {
-  #minScale = 1;
+  #minScale = 0.5;
   #maxScale = 5;
   #scale = 1;
 
@@ -32,7 +32,7 @@ class Controls extends BaseElement {
 
   #zoomIn(event: MouseEvent) {
     if (this.#scale >= this.#maxScale) return;
-    this.#scale += 0.2;
+    this.#scale *= 1.2;
     document.documentElement.style.setProperty(
       "--scale",
       this.#scale.toString()
@@ -41,7 +41,7 @@ class Controls extends BaseElement {
 
   #zoomOut(event: MouseEvent) {
     if (this.#scale <= this.#minScale) return;
-    this.#scale -= 0.2;
+    this.#scale *= 0.8;
     document.documentElement.style.setProperty(
       "--scale",
       this.#scale.toString()
