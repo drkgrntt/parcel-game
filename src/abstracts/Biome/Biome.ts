@@ -6,6 +6,7 @@ import { Tile, TileType } from "../Tile/Tile";
 import template from "./Biome.html";
 import { Water } from "../../components/Water/Water";
 import { Map } from "../../components/Map/Map";
+import { sendEvent } from "../../utils/events";
 
 export const TILE_TYPE_MAP = {
   grass: Grass,
@@ -78,6 +79,7 @@ export class Biome extends BaseElement {
         biome.appendChild(tile);
       }
     }
+    sendEvent("tiles-set", null, this);
   }
 
   #setRelativePositionInfo() {

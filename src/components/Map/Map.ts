@@ -3,6 +3,7 @@ import { BaseElement } from "../../abstracts/BaseElement/BaseElement";
 import { TILE_TYPES } from "../../abstracts/Tile/Tile";
 import { Biome } from "../../abstracts/Biome/Biome";
 import { getRandom } from "../../utils";
+import { sendEvent } from "../../utils/events";
 
 export class Map extends BaseElement {
   // Full map size, this can be bigger than the visible area
@@ -48,6 +49,7 @@ export class Map extends BaseElement {
         map.appendChild(biome);
       }
     }
+    sendEvent("biomes-set", null, this);
   }
 }
 

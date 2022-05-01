@@ -1,6 +1,13 @@
-export const getRandom = <T>(arr: T[]): T => {
+export const getRandom = <T>(
+  arr: T[],
+  isAcceptable?: (found: T) => boolean
+): T => {
   const len = arr.length;
   const randomNumber = Math.random() * len;
   const index = Math.floor(randomNumber);
-  return arr[index];
+  const item = arr[index];
+  if (isAcceptable) {
+    return isAcceptable(item) ? item : getRandom(arr, isAcceptable);
+  }
+  return item;
 };

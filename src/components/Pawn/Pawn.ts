@@ -6,14 +6,18 @@ import { sendEvent } from "../../utils/events";
 
 export class Pawn extends BaseElement {
   #destination: Position = [];
-  #position: Position = [10, 10];
-  #speed: PawnSpeed = 8;
+  #position: Position = [];
+  #speed: PawnSpeed = 5;
   #movementTimeout: number;
   #tile: Tile;
 
-  constructor() {
+  constructor(tile?: Tile) {
     super();
     this.template = template;
+    if (tile) {
+      this.#tile = tile;
+      this.position = tile.position;
+    }
   }
 
   get position(): Position {
@@ -56,7 +60,7 @@ export class Pawn extends BaseElement {
     this.destination = event.detail.position;
   }
 
-  #getNextPosition(): Position {
+  #getNextTile(): Tile {
     const [posX, posY] = this.position;
     const [destX, destY] = this.#destination;
     let nextX = posX;
@@ -74,24 +78,40 @@ export class Pawn extends BaseElement {
       nextY--;
     }
 
-    return [nextX, nextY];
+    // TODO: This could _possibly_ be improved
+    const nextTile = Object.values(this.#tile.adjacentTiles).find(
+      ({ position: [x, y] }) => x === nextX && y === nextY
+    );
+
+    return nextTile ?? this.#tile;
   }
 
   move() {
-    const [x, y] = this.#getNextPosition();
+    const tile = this.#getNextTile();
+    const [x, y] = tile.position;
     const [posX, posY] = this.position;
+
     if (x === posX && y === posY) {
-      this.#destination = [];
-      return;
+      return this.stop();
     }
 
-    sendEvent(`exiting-position-${posX}-${posY}`, this);
+    // TODO: Varying levels of passibility
+    if (!tile.isPassable) {
+      return this.stop();
+    }
+
     sendEvent(`entering-position-${x}-${y}`, this);
-    this.position = [x, y];
+    sendEvent(`exiting-position-${posX}-${posY}`, this);
+    this.#tile = tile;
+    this.position = tile.position;
     this.#movementTimeout = setTimeout(
       () => this.move(),
       100 * (10 - this.#speed)
     );
+  }
+
+  stop() {
+    this.#destination = [];
   }
 }
 
