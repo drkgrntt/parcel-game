@@ -1,17 +1,6 @@
 .pawn {
-  --color: crimson;
-  background-color: var(--color);
-  width: calc(0.7 * var(--tile-size) * var(--scale));
-  height: calc(0.7 * var(--tile-size) * var(--scale));
-  border-radius: 100rem;
-  z-index: 2;
-  box-shadow: 1px 1px 5px var(--black);
-
-  /* Center of the tile */
-  transform: translate(
-    calc(0.15 * var(--tile-size) * var(--scale)),
-    calc(0.15 * var(--tile-size) * var(--scale))
-  );
+  --color: tan;
+  --body-color: red;
 
   /* Position */
   position: absolute;
@@ -23,4 +12,40 @@
   /* Speed */
   --speed: 3s;
   transition: calc(var(--speed) / 10) linear;
+}
+
+/* Head */
+.pawn::after {
+  content: "";
+
+  display: block;
+  background-color: var(--color);
+  width: calc(0.5 * var(--tile-size) * var(--scale));
+  height: calc(0.5 * var(--tile-size) * var(--scale));
+  border-radius: 100rem;
+  z-index: 2;
+  box-shadow: 1px 1px 5px var(--black);
+
+  transform: translate(
+    calc(0.25 * var(--tile-size) * var(--scale)),
+    calc(-0.5 * var(--tile-size) * var(--scale))
+  );
+}
+
+/* Body */
+.pawn::before {
+  content: "";
+
+  display: block;
+  background-color: var(--body-color);
+  width: calc(0.35 * var(--tile-size) * var(--scale));
+  height: calc(0.5 * var(--tile-size) * var(--scale));
+  border-radius: 100rem;
+  z-index: 2;
+  box-shadow: 1px 1px 5px var(--black);
+
+  transform: translate(
+    calc(0.325 * var(--tile-size) * var(--scale)),
+    calc(0.3 * var(--tile-size) * var(--scale))
+  );
 }
