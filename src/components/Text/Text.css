@@ -5,6 +5,7 @@
 }
 
 .text-container {
+  pointer-events: none;
   z-index: 9999;
   position: absolute;
   bottom: 2rem;
