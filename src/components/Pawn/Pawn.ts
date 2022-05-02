@@ -94,16 +94,39 @@ export class Pawn extends BaseElement {
   }
 
   move() {
-    const tile = this.#getNextTile();
-    const [x, y] = tile.position;
+    let tile = this.#getNextTile();
     const [posX, posY] = this.position;
 
-    if (x === posX && y === posY) {
-      return this.stop();
+    // TODO: Varying levels of passibility
+    // Attempt to not change the y or x.
+    // This helps diagonal pathing
+    if (!tile.isPassable) {
+      let newTile = Object.values(this.#tile.adjacentTiles).find(
+        ({ position: [x, y] }) => {
+          const [tx, ty] = tile.position;
+          return x === tx - (tx - posX) && y === ty;
+        }
+      );
+
+      if (!newTile?.isPassable) {
+        newTile = Object.values(this.#tile.adjacentTiles).find(
+          ({ position: [x, y] }) => {
+            const [tx, ty] = tile.position;
+            return x === tx && y === ty - (ty - posY);
+          }
+        );
+
+        if (!newTile?.isPassable) {
+          return this.stop();
+        }
+      }
+
+      tile = newTile;
     }
 
-    // TODO: Varying levels of passibility
-    if (!tile.isPassable) {
+    const [x, y] = tile.position;
+
+    if (x === posX && y === posY) {
       return this.stop();
     }
 
