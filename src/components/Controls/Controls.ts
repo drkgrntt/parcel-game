@@ -4,7 +4,7 @@ import template from "./Controls.html";
 export const ZOOM_IN_SELECTOR = ".zoom.in";
 export const ZOOM_OUT_SELECTOR = ".zoom.out";
 export const SCALES = [0.4, 0.6, 0.8, 1, 1.5, 2, 3, 4];
-export const CONTROLS_ELEMENT = "g-selector";
+export const CONTROLS_ELEMENT = "g-controls";
 
 class Controls extends BaseElement {
   #scaleIndex = SCALES.indexOf(1);
