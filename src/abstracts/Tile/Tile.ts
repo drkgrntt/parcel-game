@@ -4,8 +4,12 @@ import { sendEvent } from "../../utils/events";
 import { Adjacents, Position, RelativePositionInfo } from "../../types";
 import { Biome } from "../Biome/Biome";
 
-export type TileType = "grass" | "dirt" | "water";
-export const TILE_TYPES: TileType[] = ["grass", "dirt", "water"];
+export const TILE_TYPES = ["grass", "dirt", "water"] as const;
+export const POSITION_ENTER_EVENT = "entering-position";
+export const POSITION_EXIT_EVENT = "exiting-position";
+export const TILE_SELECTED_EVENT = "tile-selected";
+export const TILE_SELECTOR = ".tile";
+export type TileType = typeof TILE_TYPES[number];
 
 export class Tile extends BaseElement {
   biome: Biome;
@@ -205,6 +209,6 @@ export class Tile extends BaseElement {
   }
 
   handleClick(event: MouseEvent) {
-    sendEvent("tile-selected", this);
+    sendEvent(TILE_SELECTED_EVENT, this);
   }
 }

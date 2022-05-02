@@ -1,11 +1,12 @@
 import { Position } from "../../types";
 import { getRandom } from "../../utils";
-import { Tile } from "../../abstracts/Tile/Tile";
+import { Tile, TILE_SELECTOR } from "../../abstracts/Tile/Tile";
 import { Biome } from "../../abstracts/Biome/Biome";
 
-export class Water extends Tile {
-  static #COLORS = ["#00f", "#03d", "#30d"];
+export const WATER_COLORS = ["#00f", "#03d", "#30d"];
+export const WATER_ELEMENT_NAME = "g-water";
 
+export class Water extends Tile {
   constructor(biome: Biome, position: Position) {
     super(biome, position, "water");
     this.isPassable = false;
@@ -17,11 +18,12 @@ export class Water extends Tile {
   }
 
   setColor() {
-    const color = getRandom(Water.#COLORS);
+    const color = getRandom(WATER_COLORS);
     this.shadowRoot
-      .querySelector<HTMLDivElement>(".tile")
+      .querySelector<HTMLDivElement>(TILE_SELECTOR)
       .style.setProperty("--color", color);
   }
 }
 
-customElements.get("g-water") ?? customElements.define("g-water", Water);
+customElements.get(WATER_ELEMENT_NAME) ??
+  customElements.define(WATER_ELEMENT_NAME, Water);

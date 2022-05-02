@@ -1,6 +1,8 @@
-import { log } from "../../utils/logger";
 import { BaseElement } from "../../abstracts/BaseElement/BaseElement";
 import template from "./Text.html";
+
+export const TEXT_ELEMENT_NAME = "g-text";
+export const TEXT_CONTAINER_SELECTOR = ".text-container";
 
 export class Text extends BaseElement {
   #textSlot: HTMLSlotElement;
@@ -28,13 +30,13 @@ export class Text extends BaseElement {
 
   #disappear() {
     this.shadowRoot
-      .querySelector<HTMLDivElement>(".text-container")
+      .querySelector<HTMLDivElement>(TEXT_CONTAINER_SELECTOR)
       ?.style.setProperty("--display", "none");
   }
 
   #appear() {
     this.shadowRoot
-      .querySelector<HTMLDivElement>(".text-container")
+      .querySelector<HTMLDivElement>(TEXT_CONTAINER_SELECTOR)
       ?.style.setProperty("--display", "flex");
   }
 
@@ -72,4 +74,5 @@ export class Text extends BaseElement {
   }
 }
 
-customElements.get("g-text") ?? customElements.define("g-text", Text);
+customElements.get(TEXT_ELEMENT_NAME) ??
+  customElements.define(TEXT_ELEMENT_NAME, Text);

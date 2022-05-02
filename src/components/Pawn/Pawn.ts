@@ -1,8 +1,15 @@
 import { BaseElement } from "../../abstracts/BaseElement/BaseElement";
 import template from "./Pawn.html";
 import { PawnSpeed, Position } from "../../types";
-import { Tile } from "../../abstracts/Tile/Tile";
+import {
+  POSITION_ENTER_EVENT,
+  POSITION_EXIT_EVENT,
+  Tile,
+} from "../../abstracts/Tile/Tile";
 import { sendEvent } from "../../utils/events";
+
+export const PAWN_ELEMENT_NAME = "g-pawn";
+export const PAWN_SELECTOR = ".pawn";
 
 export class Pawn extends BaseElement {
   #destination: Position = [];
@@ -26,7 +33,7 @@ export class Pawn extends BaseElement {
 
   set position([x, y]: Position) {
     this.#position = [x, y];
-    const pawn = this.shadowRoot.querySelector<HTMLDivElement>(".pawn");
+    const pawn = this.shadowRoot.querySelector<HTMLDivElement>(PAWN_SELECTOR);
     pawn?.style.setProperty("--x", x.toString());
     pawn?.style.setProperty("--y", y.toString());
   }
@@ -37,7 +44,7 @@ export class Pawn extends BaseElement {
 
   set speed(s: PawnSpeed) {
     this.#speed = s;
-    const pawn = this.shadowRoot.querySelector<HTMLDivElement>(".pawn");
+    const pawn = this.shadowRoot.querySelector<HTMLDivElement>(PAWN_SELECTOR);
     pawn?.style.setProperty("--speed", `${10 - s}s`);
   }
 
@@ -100,8 +107,8 @@ export class Pawn extends BaseElement {
       return this.stop();
     }
 
-    sendEvent(`entering-position-${x}-${y}`, this);
-    sendEvent(`exiting-position-${posX}-${posY}`, this);
+    sendEvent(`${POSITION_ENTER_EVENT}-${x}-${y}`, this);
+    sendEvent(`${POSITION_EXIT_EVENT}-${posX}-${posY}`, this);
     this.#tile = tile;
     this.position = tile.position;
     this.#movementTimeout = setTimeout(
@@ -115,4 +122,5 @@ export class Pawn extends BaseElement {
   }
 }
 
-customElements.get("g-pawn") ?? customElements.define("g-pawn", Pawn);
+customElements.get(PAWN_ELEMENT_NAME) ??
+  customElements.define(PAWN_ELEMENT_NAME, Pawn);

@@ -1,15 +1,21 @@
 import template from "./Screen.html";
 import { BaseElement } from "../../abstracts/BaseElement/BaseElement";
-import { Text } from "../Text/Text";
+import { Text, TEXT_ELEMENT_NAME } from "../Text/Text";
 import { WELCOME } from "../../utils/texts";
-import { Map } from "../Map/Map";
+import { BIOMES_SET_EVENT, Map, MAP_ELEMENT_NAME } from "../Map/Map";
 import { Player } from "../Player/Player";
 import { getRandom } from "../../utils";
+import { TILES_SET_EVENT } from "../../abstracts/Biome/Biome";
+
+export const SCREEN_HEIGHT = 40;
+export const SCREEN_WIDTH = 60;
+export const SCREEN_ELEMENT_NAME = "g-screen";
+export const SCREEN_SELECTOR = ".screen";
 
 export class Screen extends BaseElement {
   // Visible area
-  #height = 40;
-  #width = 60;
+  #height = SCREEN_HEIGHT;
+  #width = SCREEN_WIDTH;
 
   constructor() {
     super();
@@ -17,13 +23,15 @@ export class Screen extends BaseElement {
   }
   set height(value: number) {
     this.#height = value;
-    const screen = this.shadowRoot.querySelector<HTMLDivElement>(".screen");
+    const screen =
+      this.shadowRoot.querySelector<HTMLDivElement>(SCREEN_SELECTOR);
     screen?.style.setProperty("--height", value.toString());
   }
 
   set width(value: number) {
     this.#width = value;
-    const screen = this.shadowRoot.querySelector<HTMLDivElement>(".screen");
+    const screen =
+      this.shadowRoot.querySelector<HTMLDivElement>(SCREEN_SELECTOR);
     screen?.style.setProperty("--width", value.toString());
   }
 
@@ -31,21 +39,21 @@ export class Screen extends BaseElement {
     this.height = this.#height;
     this.width = this.#width;
 
-    const text = this.shadowRoot.querySelector<Text>("g-text");
+    const text = this.shadowRoot.querySelector<Text>(TEXT_ELEMENT_NAME);
     text.text = WELCOME;
 
     this.#setPlayer();
   }
 
   #setPlayer(): void {
-    const map = this.shadowRoot.querySelector<Map>("g-map");
+    const map = this.shadowRoot.querySelector<Map>(MAP_ELEMENT_NAME);
     this.createEventListener(
-      "biomes-set",
+      BIOMES_SET_EVENT,
       () => {
         // TODO: This should be based on passibility
         const biome = getRandom(map.biomes, (biome) => biome.type !== "water");
         this.createEventListener(
-          "tiles-set",
+          TILES_SET_EVENT,
           () => {
             const tile = getRandom(biome.tiles);
             const player = new Player(tile);
@@ -59,4 +67,5 @@ export class Screen extends BaseElement {
   }
 }
 
-customElements.get("g-screen") ?? customElements.define("g-screen", Screen);
+customElements.get(SCREEN_ELEMENT_NAME) ??
+  customElements.define(SCREEN_ELEMENT_NAME, Screen);

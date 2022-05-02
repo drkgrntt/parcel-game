@@ -1,11 +1,12 @@
 import { Position } from "../../types";
 import { getRandom } from "../../utils";
-import { Tile } from "../../abstracts/Tile/Tile";
+import { Tile, TILE_SELECTOR } from "../../abstracts/Tile/Tile";
 import { Biome } from "../../abstracts/Biome/Biome";
 
-export class Grass extends Tile {
-  static #COLORS = ["#0c0", "#0e0", "#0d0"];
+export const GRASS_COLORS = ["#0c0", "#0e0", "#0d0"];
+export const GRASS_ELEMENT_NAME = "g-grass";
 
+export class Grass extends Tile {
   constructor(biome: Biome, position: Position) {
     super(biome, position, "grass");
   }
@@ -16,11 +17,12 @@ export class Grass extends Tile {
   }
 
   setColor() {
-    const color = getRandom(Grass.#COLORS);
+    const color = getRandom(GRASS_COLORS);
     this.shadowRoot
-      .querySelector<HTMLDivElement>(".tile")
+      .querySelector<HTMLDivElement>(TILE_SELECTOR)
       .style.setProperty("--color", color);
   }
 }
 
-customElements.get("g-grass") ?? customElements.define("g-grass", Grass);
+customElements.get(GRASS_ELEMENT_NAME) ??
+  customElements.define(GRASS_ELEMENT_NAME, Grass);

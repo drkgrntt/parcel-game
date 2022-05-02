@@ -1,3 +1,4 @@
+import { sendEvent } from "../../utils/events";
 import { getTemplate } from "../../utils/templates";
 
 export const TEMPLATE_SET_EVENT = "template-set";
@@ -40,7 +41,7 @@ export abstract class BaseElement extends HTMLElement {
       this.#template = document.createElement("template");
       this.#template.innerHTML = html;
       this.shadowRoot.appendChild(this.#template.content.cloneNode(true));
-      setTimeout(() => this.dispatchEvent(new Event(TEMPLATE_SET_EVENT)));
+      setTimeout(() => sendEvent(TEMPLATE_SET_EVENT));
     });
   }
 
@@ -52,7 +53,7 @@ export abstract class BaseElement extends HTMLElement {
 
   destroy() {
     for (const [object, event, cb] of this.#eventListeners) {
-      object.removeEventListener(event, cb);
+      object?.removeEventListener(event, cb);
     }
   }
 }

@@ -1,9 +1,13 @@
 import { BaseElement } from "../../abstracts/BaseElement/BaseElement";
 import template from "./Controls.html";
 
+export const ZOOM_IN_SELECTOR = ".zoom.in";
+export const ZOOM_OUT_SELECTOR = ".zoom.out";
+export const SCALES = [0.4, 0.6, 0.8, 1, 1.5, 2, 3, 4];
+export const CONTROLS_ELEMENT = "g-selector";
+
 class Controls extends BaseElement {
-  #scales = [0.4, 0.6, 0.8, 1, 1.5, 2, 3, 4];
-  #scaleIndex = this.#scales.indexOf(1);
+  #scaleIndex = SCALES.indexOf(1);
 
   constructor() {
     super();
@@ -11,7 +15,6 @@ class Controls extends BaseElement {
   }
 
   templateSetCallback(): void {
-    console.log("controls template set");
     this.#addButtonControls();
   }
 
@@ -19,22 +22,22 @@ class Controls extends BaseElement {
     this.createEventListener(
       "click",
       this.#zoomIn.bind(this),
-      this.shadowRoot.querySelector(".zoom.in")
+      this.shadowRoot.querySelector(ZOOM_IN_SELECTOR)
     );
 
     this.createEventListener(
       "click",
       this.#zoomOut.bind(this),
-      this.shadowRoot.querySelector(".zoom.out")
+      this.shadowRoot.querySelector(ZOOM_OUT_SELECTOR)
     );
   }
 
   #zoomIn(event: MouseEvent) {
-    if (this.#scaleIndex >= this.#scales.length - 1) return;
+    if (this.#scaleIndex >= SCALES.length - 1) return;
     this.#scaleIndex++;
     document.documentElement.style.setProperty(
       "--scale",
-      this.#scales[this.#scaleIndex].toString()
+      SCALES[this.#scaleIndex].toString()
     );
   }
 
@@ -43,10 +46,10 @@ class Controls extends BaseElement {
     this.#scaleIndex--;
     document.documentElement.style.setProperty(
       "--scale",
-      this.#scales[this.#scaleIndex].toString()
+      SCALES[this.#scaleIndex].toString()
     );
   }
 }
 
-customElements.get("g-controls") ??
-  customElements.define("g-controls", Controls);
+customElements.get(CONTROLS_ELEMENT) ??
+  customElements.define(CONTROLS_ELEMENT, Controls);

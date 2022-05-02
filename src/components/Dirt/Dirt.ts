@@ -1,11 +1,18 @@
 import { Position } from "../../types";
 import { getRandom } from "../../utils";
-import { Tile } from "../../abstracts/Tile/Tile";
+import { Tile, TILE_SELECTOR } from "../../abstracts/Tile/Tile";
 import { Biome } from "../../abstracts/Biome/Biome";
 
-export class Dirt extends Tile {
-  static #COLORS = ["#462e1a", "#503715", "#743e0c", "#552f12", "#46250a"];
+export const DIRT_COLORS = [
+  "#462e1a",
+  "#503715",
+  "#743e0c",
+  "#552f12",
+  "#46250a",
+];
+export const DIRT_ELEMENT_NAME = "g-dirt";
 
+export class Dirt extends Tile {
   constructor(biome: Biome, position: Position) {
     super(biome, position, "dirt");
   }
@@ -16,11 +23,12 @@ export class Dirt extends Tile {
   }
 
   setColor() {
-    const color = getRandom(Dirt.#COLORS);
+    const color = getRandom(DIRT_COLORS);
     this.shadowRoot
-      .querySelector<HTMLDivElement>(".tile")
+      .querySelector<HTMLDivElement>(TILE_SELECTOR)
       .style.setProperty("--color", color);
   }
 }
 
-customElements.get("g-dirt") ?? customElements.define("g-dirt", Dirt);
+customElements.get(DIRT_ELEMENT_NAME) ??
+  customElements.define(DIRT_ELEMENT_NAME, Dirt);

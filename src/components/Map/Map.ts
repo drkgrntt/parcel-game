@@ -1,19 +1,22 @@
 import template from "./Map.html";
 import { BaseElement } from "../../abstracts/BaseElement/BaseElement";
-import { TILE_TYPES } from "../../abstracts/Tile/Tile";
-import { Biome } from "../../abstracts/Biome/Biome";
+import { TileType, TILE_TYPES } from "../../abstracts/Tile/Tile";
+import { Biome, BIOME_HEIGHT, BIOME_WIDTH } from "../../abstracts/Biome/Biome";
 import { getRandom } from "../../utils";
 import { sendEvent } from "../../utils/events";
 
+export const MAP_HEIGHT = 40;
+export const MAP_WIDTH = 60;
+export const MAP_HEIGHT_IN_BIOMES = MAP_HEIGHT / BIOME_HEIGHT;
+export const MAP_WIDTH_IN_BIOMES = MAP_WIDTH / BIOME_WIDTH;
+export const MAP_ELEMENT_NAME = "g-map";
+export const MAP_SELECTOR = ".map";
+export const BIOMES_SET_EVENT = "biomes-set";
+
 export class Map extends BaseElement {
   // Full map size, this can be bigger than the visible area
-  static height = 40;
-  static width = 60;
-  static heightInBiomes = Map.height / Biome.height;
-  static widthInBiomes = Map.width / Biome.width;
-
-  #height = 40;
-  #width = 60;
+  #height = MAP_HEIGHT;
+  #width = MAP_WIDTH;
   biomes: Biome[] = [];
 
   constructor() {
@@ -23,13 +26,13 @@ export class Map extends BaseElement {
 
   set height(value: number) {
     this.#height = value;
-    const map = this.shadowRoot.querySelector<HTMLDivElement>(".map");
+    const map = this.shadowRoot.querySelector<HTMLDivElement>(MAP_SELECTOR);
     map?.style.setProperty("--height", value.toString());
   }
 
   set width(value: number) {
     this.#width = value;
-    const map = this.shadowRoot.querySelector<HTMLDivElement>(".map");
+    const map = this.shadowRoot.querySelector<HTMLDivElement>(MAP_SELECTOR);
     map?.style.setProperty("--width", value.toString());
   }
 
@@ -40,17 +43,18 @@ export class Map extends BaseElement {
   }
 
   #setBiomes(): void {
-    const map = this.shadowRoot.querySelector(".map");
-    for (let y = 0; y < Math.ceil(this.#height / Biome.height); y++) {
-      for (let x = 0; x < Math.ceil(this.#width / Biome.width); x++) {
-        const type = getRandom(TILE_TYPES);
+    const map = this.shadowRoot.querySelector(MAP_SELECTOR);
+    for (let y = 0; y < Math.ceil(this.#height / BIOME_HEIGHT); y++) {
+      for (let x = 0; x < Math.ceil(this.#width / BIOME_WIDTH); x++) {
+        const type = getRandom<TileType>(TILE_TYPES as unknown as TileType[]);
         const biome = new Biome(this, [x, y], type);
         this.biomes.push(biome);
         map.appendChild(biome);
       }
     }
-    sendEvent("biomes-set", null, this);
+    sendEvent(BIOMES_SET_EVENT, null, this);
   }
 }
 
-customElements.get("g-map") ?? customElements.define("g-map", Map);
+customElements.get(MAP_ELEMENT_NAME) ??
+  customElements.define(MAP_ELEMENT_NAME, Map);
