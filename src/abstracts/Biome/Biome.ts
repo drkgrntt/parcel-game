@@ -12,8 +12,8 @@ import {
 } from "../../components/Map/Map";
 import { sendEvent } from "../../utils/events";
 
-export const BIOME_HEIGHT = 40;
-export const BIOME_WIDTH = 60;
+export const BIOME_HEIGHT = 4;
+export const BIOME_WIDTH = 6;
 export const BIOME_ELEMENT_NAME = "g-biome";
 export const BIOME_SELECTOR = ".biome";
 export const TILES_SET_EVENT = "tiles-set";

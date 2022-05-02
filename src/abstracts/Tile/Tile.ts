@@ -37,13 +37,13 @@ export class Tile extends BaseElement {
   connectedCallback() {
     const [x, y] = this.position;
     this.createEventListener(
-      `entering-position-${x}-${y}`,
+      `${POSITION_ENTER_EVENT}-${x}-${y}`,
       (event: CustomEvent) => {
         this.holding.push(event.detail);
       }
     );
     this.createEventListener(
-      `exiting-position-${x}-${y}`,
+      `${POSITION_EXIT_EVENT}-${x}-${y}`,
       (event: CustomEvent) => {
         this.holding.splice(this.holding.indexOf(event.detail));
       }

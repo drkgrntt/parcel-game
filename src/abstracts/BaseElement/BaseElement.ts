@@ -41,7 +41,7 @@ export abstract class BaseElement extends HTMLElement {
       this.#template = document.createElement("template");
       this.#template.innerHTML = html;
       this.shadowRoot.appendChild(this.#template.content.cloneNode(true));
-      setTimeout(() => sendEvent(TEMPLATE_SET_EVENT));
+      setTimeout(() => sendEvent(TEMPLATE_SET_EVENT, this, this));
     });
   }
 

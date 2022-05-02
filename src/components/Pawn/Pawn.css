@@ -5,6 +5,7 @@
   height: calc(0.7 * var(--tile-size) * var(--scale));
   border-radius: 100rem;
   z-index: 2;
+  box-shadow: 1px 1px 5px var(--black);
 
   /* Center of the tile */
   transform: translate(

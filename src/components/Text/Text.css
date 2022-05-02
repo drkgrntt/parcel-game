@@ -5,6 +5,7 @@
 }
 
 .text-container {
+  z-index: 9999;
   position: absolute;
   bottom: 2rem;
   left: 50%;
