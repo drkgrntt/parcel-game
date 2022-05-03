@@ -6,6 +6,7 @@ import { BIOMES_SET_EVENT, Map, MAP_ELEMENT_NAME } from "../Map/Map";
 import { Player } from "../Player/Player";
 import { getRandom } from "../../utils";
 import { TILES_SET_EVENT } from "../abstracts/Biome/Biome";
+import { sendEvent } from "../../utils/events";
 
 export const SCREEN_HEIGHT = 40;
 export const SCREEN_WIDTH = 60;
@@ -58,6 +59,8 @@ export class Screen extends BaseElement {
             const tile = getRandom(biome.tiles);
             const player = new Player(tile);
             map.appendChild(player);
+
+            sendEvent("game-ready");
           },
           biome
         );
