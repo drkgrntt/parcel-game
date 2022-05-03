@@ -1,16 +1,12 @@
-import { Adjacents, Position, RelativePositionInfo } from "../../types";
-import { Dirt } from "../../components/Dirt/Dirt";
-import { Grass } from "../../components/Grass/Grass";
+import { Adjacents, Position, RelativePositionInfo } from "../../../types";
+import { Dirt } from "../../Dirt/Dirt";
+import { Grass } from "../../Grass/Grass";
 import { BaseElement } from "../BaseElement/BaseElement";
 import { Tile, TileType } from "../Tile/Tile";
 import template from "./Biome.html";
-import { Water } from "../../components/Water/Water";
-import {
-  Map,
-  MAP_HEIGHT_IN_BIOMES,
-  MAP_WIDTH_IN_BIOMES,
-} from "../../components/Map/Map";
-import { sendEvent } from "../../utils/events";
+import { Water } from "../../Water/Water";
+import { Map, MAP_HEIGHT_IN_BIOMES, MAP_WIDTH_IN_BIOMES } from "../../Map/Map";
+import { sendEvent } from "../../../utils/events";
 
 export const BIOME_HEIGHT = 4;
 export const BIOME_WIDTH = 6;

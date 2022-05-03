@@ -1,4 +1,4 @@
-import { BaseElement } from "../../abstracts/BaseElement/BaseElement";
+import { BaseElement } from "../abstracts/BaseElement/BaseElement";
 import template from "./Controls.html";
 
 export const ZOOM_IN_SELECTOR = ".zoom.in";

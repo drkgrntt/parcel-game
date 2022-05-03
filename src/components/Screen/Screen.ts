@@ -1,11 +1,11 @@
 import template from "./Screen.html";
-import { BaseElement } from "../../abstracts/BaseElement/BaseElement";
+import { BaseElement } from "../abstracts/BaseElement/BaseElement";
 import { Text, TEXT_ELEMENT_NAME } from "../Text/Text";
 import { WELCOME } from "../../utils/texts";
 import { BIOMES_SET_EVENT, Map, MAP_ELEMENT_NAME } from "../Map/Map";
 import { Player } from "../Player/Player";
 import { getRandom } from "../../utils";
-import { TILES_SET_EVENT } from "../../abstracts/Biome/Biome";
+import { TILES_SET_EVENT } from "../abstracts/Biome/Biome";
 
 export const SCREEN_HEIGHT = 40;
 export const SCREEN_WIDTH = 60;

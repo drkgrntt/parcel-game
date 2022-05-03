@@ -1,7 +1,7 @@
 import { Position } from "../../types";
 import { getRandom } from "../../utils";
-import { Tile, TILE_SELECTOR } from "../../abstracts/Tile/Tile";
-import { Biome } from "../../abstracts/Biome/Biome";
+import { Tile, TILE_SELECTOR } from "../abstracts/Tile/Tile";
+import { Biome } from "../abstracts/Biome/Biome";
 
 export const WATER_COLORS = ["#00f", "#03d", "#30d"];
 export const WATER_ELEMENT_NAME = "g-water";

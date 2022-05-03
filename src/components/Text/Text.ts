@@ -1,4 +1,4 @@
-import { BaseElement } from "../../abstracts/BaseElement/BaseElement";
+import { BaseElement } from "../abstracts/BaseElement/BaseElement";
 import template from "./Text.html";
 
 export const TEXT_ELEMENT_NAME = "g-text";

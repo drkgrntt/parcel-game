@@ -1,7 +1,7 @@
 import { BaseElement } from "../BaseElement/BaseElement";
 import template from "./Tile.html";
-import { sendEvent } from "../../utils/events";
-import { Adjacents, Position, RelativePositionInfo } from "../../types";
+import { sendEvent } from "../../../utils/events";
+import { Adjacents, Position, RelativePositionInfo } from "../../../types";
 import { Biome } from "../Biome/Biome";
 
 export const TILE_TYPES = ["grass", "dirt", "water"] as const;

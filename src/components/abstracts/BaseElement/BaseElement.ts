@@ -1,5 +1,5 @@
-import { sendEvent } from "../../utils/events";
-import { getTemplate } from "../../utils/templates";
+import { sendEvent } from "../../../utils/events";
+import { getTemplate } from "../../../utils/templates";
 
 export const TEMPLATE_SET_EVENT = "template-set";
 

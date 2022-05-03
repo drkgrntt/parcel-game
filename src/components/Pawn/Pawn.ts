@@ -1,11 +1,11 @@
-import { BaseElement } from "../../abstracts/BaseElement/BaseElement";
+import { BaseElement } from "../abstracts/BaseElement/BaseElement";
 import template from "./Pawn.html";
 import { PawnSpeed, Position } from "../../types";
 import {
   POSITION_ENTER_EVENT,
   POSITION_EXIT_EVENT,
   Tile,
-} from "../../abstracts/Tile/Tile";
+} from "../abstracts/Tile/Tile";
 import { sendEvent } from "../../utils/events";
 
 export const PAWN_ELEMENT_NAME = "g-pawn";

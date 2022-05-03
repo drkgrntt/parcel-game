@@ -1,4 +1,4 @@
-import { TILE_SELECTED_EVENT } from "../../abstracts/Tile/Tile";
+import { TILE_SELECTED_EVENT } from "../abstracts/Tile/Tile";
 import { Pawn } from "../Pawn/Pawn";
 
 export const PLAYER_ELEMENT_NAME = "g-player";

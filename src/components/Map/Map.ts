@@ -1,7 +1,7 @@
 import template from "./Map.html";
-import { BaseElement } from "../../abstracts/BaseElement/BaseElement";
-import { TileType, TILE_TYPES } from "../../abstracts/Tile/Tile";
-import { Biome, BIOME_HEIGHT, BIOME_WIDTH } from "../../abstracts/Biome/Biome";
+import { BaseElement } from "../abstracts/BaseElement/BaseElement";
+import { TileType, TILE_TYPES } from "../abstracts/Tile/Tile";
+import { Biome, BIOME_HEIGHT, BIOME_WIDTH } from "../abstracts/Biome/Biome";
 import { getRandom } from "../../utils";
 import { sendEvent } from "../../utils/events";
 
