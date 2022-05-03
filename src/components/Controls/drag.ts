@@ -1,3 +1,9 @@
+import {
+  GAME_READY_EVENT,
+  SCREEN_ELEMENT_NAME,
+  SCREEN_SELECTOR,
+} from "../Screen/Screen";
+
 const handleDrag = () => {
   const SCALE_X = 1.5;
   const SCALE_Y = 1.5;
@@ -54,7 +60,7 @@ const handleDrag = () => {
     });
   }
 
-  const screen = document.querySelector("g-screen");
+  const screen = document.querySelector(SCREEN_ELEMENT_NAME);
 
   screen.addEventListener(
     "mousedown",
@@ -65,7 +71,7 @@ const handleDrag = () => {
 
       swallow(e);
 
-      el = screen.shadowRoot.querySelector(".screen");
+      el = screen.shadowRoot.querySelector(SCREEN_SELECTOR);
       clientX = e.clientX;
       clientY = e.clientY;
 
@@ -78,4 +84,4 @@ const handleDrag = () => {
   );
 };
 
-document.addEventListener("game-ready", handleDrag, { once: true });
+document.addEventListener(GAME_READY_EVENT, handleDrag, { once: true });
