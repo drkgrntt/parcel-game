@@ -1,0 +1,41 @@
+.plant {
+  --color: #00aa00;
+  --trunk-color: #6c0909;
+}
+
+/* Leaves */
+.plant::after {
+  content: "";
+
+  display: block;
+  box-sizing: border-box;
+  background-color: var(--color);
+  width: calc(0.7 * var(--tile-size) * var(--scale));
+  height: calc(0.5 * var(--tile-size) * var(--scale));
+  border: calc(0.2 * var(--tile-size) * var(--scale)) dotted var(--color);
+  border-radius: 100rem;
+  z-index: 2;
+  box-shadow: 1px 1px 5px var(--color);
+
+  transform: translate(
+    calc(0.15 * var(--tile-size) * var(--scale)),
+    calc(-0.6 * var(--tile-size) * var(--scale))
+  );
+}
+
+/* Trunk */
+.plant::before {
+  content: "";
+
+  display: block;
+  background-color: var(--trunk-color);
+  width: calc(0.2 * var(--tile-size) * var(--scale));
+  height: calc(0.5 * var(--tile-size) * var(--scale));
+  z-index: 2;
+  /* box-shadow: 1px 1px 5px var(--black); */
+
+  transform: translate(
+    calc(0.4 * var(--tile-size) * var(--scale)),
+    calc(0.3 * var(--tile-size) * var(--scale))
+  );
+}
