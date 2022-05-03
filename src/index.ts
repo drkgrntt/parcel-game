@@ -10,3 +10,4 @@ import "./components/abstracts/Biome/Biome";
 import "./components/Pawn/Pawn";
 import "./components/Player/Player";
 import "./utils/drag";
+import "./utils/scroll";

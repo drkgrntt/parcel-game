@@ -16,6 +16,12 @@ class Controls extends BaseElement {
 
   templateSetCallback(): void {
     this.#addButtonControls();
+    this.#addScrollListener();
+  }
+
+  #addScrollListener() {
+    this.createEventListener("zoom-in", this.#zoomIn.bind(this), this);
+    this.createEventListener("zoom-out", this.#zoomOut.bind(this), this);
   }
 
   #addButtonControls() {

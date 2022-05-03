@@ -1,6 +1,4 @@
 const handleDrag = () => {
-  "use strict";
-
   const SCALE_X = 1.5;
   const SCALE_Y = 1.5;
 
