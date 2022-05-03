@@ -1,3 +1,4 @@
+import { sendEvent } from "../../utils/events";
 import { BaseElement } from "../abstracts/BaseElement/BaseElement";
 import template from "./Controls.html";
 
@@ -40,20 +41,24 @@ class Controls extends BaseElement {
 
   #zoomIn(event: MouseEvent) {
     if (this.#scaleIndex >= SCALES.length - 1) return;
+    sendEvent("before-zoom");
     this.#scaleIndex++;
     document.documentElement.style.setProperty(
       "--scale",
       SCALES[this.#scaleIndex].toString()
     );
+    sendEvent("after-zoom");
   }
 
   #zoomOut(event: MouseEvent) {
     if (this.#scaleIndex <= 0) return;
+    sendEvent("before-zoom");
     this.#scaleIndex--;
     document.documentElement.style.setProperty(
       "--scale",
       SCALES[this.#scaleIndex].toString()
     );
+    sendEvent("after-zoom");
   }
 }
 

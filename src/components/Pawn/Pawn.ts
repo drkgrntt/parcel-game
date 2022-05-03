@@ -61,6 +61,20 @@ export class Pawn extends BaseElement {
   templateSetCallback(): void {
     this.position = this.position; // Set the CSS
     this.speed = this.speed; // Set the CSS
+
+    this.#handleZoomEvents();
+  }
+
+  #handleZoomEvents() {
+    this.createEventListener("before-zoom", () => {
+      this.shadowRoot
+        .querySelector<HTMLDivElement>(PAWN_SELECTOR)
+        .style.setProperty("--speed", "0s");
+    });
+
+    this.createEventListener("after-zoom", () => {
+      setTimeout(() => (this.speed = this.speed), 100);
+    });
   }
 
   handleTileSelection(event: CustomEvent<Tile>) {
