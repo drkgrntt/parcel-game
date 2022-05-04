@@ -1,6 +1,7 @@
 import { sendEvent } from "../../utils/events";
-import { GAME_READY_EVENT, Screen, SCREEN_SELECTOR } from "../Screen/Screen";
-import { ZOOM_IN_EVENT, ZOOM_OUT_EVENT } from "./Controls";
+import { Screen } from "../Screen/Screen";
+import { ZOOM_IN_EVENT, ZOOM_OUT_EVENT } from "../../constants/controls";
+import { GAME_READY_EVENT, SCREEN_SELECTOR } from "../../constants/screen";
 
 const handleScroll = () => {
   const screen = document.querySelector<Screen>("g-screen");

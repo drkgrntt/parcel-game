@@ -10,17 +10,14 @@
   display: block;
   box-sizing: border-box;
   background-color: var(--color);
-  width: calc(0.7 * var(--tile-size) * var(--scale));
-  height: calc(0.5 * var(--tile-size) * var(--scale));
-  border: calc(0.2 * var(--tile-size) * var(--scale)) dotted var(--color);
+  width: calc(0.7 * var(--unit));
+  height: calc(0.5 * var(--unit));
+  border: calc(0.2 * var(--unit)) dotted var(--color);
   border-radius: 100rem;
   z-index: 2;
   box-shadow: 1px 1px 5px var(--color);
 
-  transform: translate(
-    calc(0.15 * var(--tile-size) * var(--scale)),
-    calc(-0.6 * var(--tile-size) * var(--scale))
-  );
+  transform: translate(calc(0.15 * var(--unit)), calc(-0.6 * var(--unit)));
 }
 
 /* Trunk */
@@ -29,13 +26,10 @@
 
   display: block;
   background-color: var(--trunk-color);
-  width: calc(0.2 * var(--tile-size) * var(--scale));
-  height: calc(0.5 * var(--tile-size) * var(--scale));
+  width: calc(0.2 * var(--unit));
+  height: calc(0.5 * var(--unit));
   z-index: 2;
   /* box-shadow: 1px 1px 5px var(--black); */
 
-  transform: translate(
-    calc(0.4 * var(--tile-size) * var(--scale)),
-    calc(0.3 * var(--tile-size) * var(--scale))
-  );
+  transform: translate(calc(0.4 * var(--unit)), calc(0.3 * var(--unit)));
 }

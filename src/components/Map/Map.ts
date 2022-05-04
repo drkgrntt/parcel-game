@@ -1,17 +1,17 @@
 import template from "./Map.html";
 import { BaseElement } from "../abstracts/BaseElement/BaseElement";
-import { TileType, TILE_TYPES } from "../abstracts/Tile/Tile";
-import { Biome, BIOME_HEIGHT, BIOME_WIDTH } from "../abstracts/Biome/Biome";
+import { Biome } from "../abstracts/Biome/Biome";
 import { getRandom } from "../../utils";
 import { sendEvent } from "../../utils/events";
-
-export const MAP_HEIGHT = 40;
-export const MAP_WIDTH = 60;
-export const MAP_HEIGHT_IN_BIOMES = MAP_HEIGHT / BIOME_HEIGHT;
-export const MAP_WIDTH_IN_BIOMES = MAP_WIDTH / BIOME_WIDTH;
-export const MAP_ELEMENT_NAME = "g-map";
-export const MAP_SELECTOR = ".map";
-export const BIOMES_SET_EVENT = "biomes-set";
+import {
+  BIOMES_SET_EVENT,
+  MAP_ELEMENT_NAME,
+  MAP_HEIGHT,
+  MAP_SELECTOR,
+  MAP_WIDTH,
+} from "../../constants/map";
+import { BIOME_HEIGHT, BIOME_WIDTH } from "../../constants/biome";
+import { TileType, TILE_TYPES } from "../../constants/tile";
 
 export class Map extends BaseElement {
   // Full map size, this can be bigger than the visible area

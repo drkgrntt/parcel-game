@@ -1,7 +1,6 @@
+import { TEMPLATE_SET_EVENT } from "../../../constants/baseElement";
 import { sendEvent } from "../../../utils/events";
 import { getTemplate } from "../../../utils/templates";
-
-export const TEMPLATE_SET_EVENT = "template-set";
 
 export abstract class BaseElement extends HTMLElement {
   #template: HTMLTemplateElement;

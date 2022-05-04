@@ -5,6 +5,14 @@
 
   --tile-size: 1rem;
   --scale: 1;
+  --unit: calc(var(--tile-size) * var(--scale));
+
+  --screen-width: calc(60 * var(--tile-size));
+  --screen-height: calc(40 * var(--tile-size));
+}
+
+body {
+  background-color: var(--black);
 }
 
 * {

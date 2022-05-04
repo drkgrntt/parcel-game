@@ -1,24 +1,19 @@
 import { Adjacents, Position, RelativePositionInfo } from "../../../types";
-import { Dirt } from "../../Dirt/Dirt";
-import { Grass } from "../../Grass/Grass";
 import { BaseElement } from "../BaseElement/BaseElement";
 import { Tile, TileType } from "../Tile/Tile";
 import template from "./Biome.html";
-import { Water } from "../../Water/Water";
-import { Map, MAP_HEIGHT_IN_BIOMES, MAP_WIDTH_IN_BIOMES } from "../../Map/Map";
+import { Map } from "../../Map/Map";
 import { sendEvent } from "../../../utils/events";
-
-export const BIOME_HEIGHT = 4;
-export const BIOME_WIDTH = 6;
-export const BIOME_ELEMENT_NAME = "g-biome";
-export const BIOME_SELECTOR = ".biome";
-export const TILES_SET_EVENT = "tiles-set";
-
-export const TILE_TYPE_MAP = {
-  grass: Grass,
-  dirt: Dirt,
-  water: Water,
-};
+import {
+  BIOME_ELEMENT_NAME,
+  BIOME_HEIGHT,
+  BIOME_SELECTOR,
+  BIOME_WIDTH,
+  TILES_SET_EVENT,
+  TILE_TYPE_MAP,
+  MAP_HEIGHT_IN_BIOMES,
+  MAP_WIDTH_IN_BIOMES,
+} from "../../../constants/biome";
 
 export class Biome extends BaseElement {
   // Biome size

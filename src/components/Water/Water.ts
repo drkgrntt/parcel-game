@@ -1,10 +1,9 @@
 import { Position } from "../../types";
 import { getRandom } from "../../utils";
-import { Tile, TILE_SELECTOR } from "../abstracts/Tile/Tile";
+import { Tile } from "../abstracts/Tile/Tile";
 import { Biome } from "../abstracts/Biome/Biome";
-
-export const WATER_COLORS = ["#00f", "#03d", "#30d"];
-export const WATER_ELEMENT_NAME = "g-water";
+import { WATER_COLORS, WATER_ELEMENT_NAME } from "../../constants/water";
+import { TILE_SELECTOR } from "../../constants/tile";
 
 export class Water extends Tile {
   constructor(biome: Biome, position: Position) {

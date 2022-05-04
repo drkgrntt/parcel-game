@@ -2,7 +2,7 @@ import {
   GAME_READY_EVENT,
   SCREEN_ELEMENT_NAME,
   SCREEN_SELECTOR,
-} from "../Screen/Screen";
+} from "../../constants/screen";
 
 const handleDrag = () => {
   const SCALE_X = 1.5;

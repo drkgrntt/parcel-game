@@ -1,7 +1,8 @@
 .tile {
   --color: black;
+  box-sizing: border-box;
   background-color: var(--color);
 
-  width: calc(var(--scale) * var(--tile-size));
-  height: calc(var(--scale) * var(--tile-size));
+  width: var(--unit);
+  height: var(--unit);
 }

@@ -2,9 +2,10 @@
   --height: 0;
   --width: 0;
 
-  height: calc(var(--scale) * var(--height) * var(--tile-size));
-  width: calc(var(--scale) * var(--width) * var(--tile-size));
+  height: calc(var(--unit) * var(--height));
+  width: calc(var(--unit) * var(--width));
 
+  box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
 }

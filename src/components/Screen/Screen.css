@@ -1,12 +1,12 @@
 .screen {
-  --height: 0;
-  --width: 0;
+  --height: var(--screen-height);
+  --width: var(--screen-width);
 
-  background-color: var(--black);
-  height: calc(var(--height) * var(--tile-size) + 1rem);
-  width: calc(var(--width) * var(--tile-size) + 1rem);
-  position: relative;
   box-sizing: border-box;
+  background-color: var(--black);
+  height: calc(var(--height) * var(--tile-size) + 0.5 * var(--tile-size));
+  width: calc(var(--width) * var(--tile-size) + 0.5 * var(--tile-size));
+  position: relative;
   overflow: scroll;
 }
 

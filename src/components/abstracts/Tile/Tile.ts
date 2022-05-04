@@ -3,13 +3,12 @@ import template from "./Tile.html";
 import { sendEvent } from "../../../utils/events";
 import { Adjacents, Position, RelativePositionInfo } from "../../../types";
 import { Biome } from "../Biome/Biome";
-
-export const TILE_TYPES = ["grass", "dirt", "water"] as const;
-export const POSITION_ENTER_EVENT = "entering-position";
-export const POSITION_EXIT_EVENT = "exiting-position";
-export const TILE_SELECTED_EVENT = "tile-selected";
-export const TILE_SELECTOR = ".tile";
-export type TileType = typeof TILE_TYPES[number];
+import {
+  POSITION_ENTER_EVENT,
+  POSITION_EXIT_EVENT,
+  TileType,
+  TILE_SELECTED_EVENT,
+} from "../../../constants/tile";
 
 export class Tile extends BaseElement {
   biome: Biome;

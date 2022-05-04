@@ -1,4 +1,6 @@
 .controls {
+  box-sizing: border-box;
+  width: var(--screen-width);
   padding: 2rem;
   background-color: var(--dark-grey);
 }

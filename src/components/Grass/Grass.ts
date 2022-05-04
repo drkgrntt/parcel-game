@@ -1,11 +1,10 @@
 import { Position } from "../../types";
 import { getRandom, getRandomNumber } from "../../utils";
-import { Tile, TILE_SELECTOR } from "../abstracts/Tile/Tile";
+import { Tile } from "../abstracts/Tile/Tile";
 import { Biome } from "../abstracts/Biome/Biome";
 import { Plant } from "../abstracts/Plant/Plant";
-
-export const GRASS_COLORS = ["#0c0", "#0e0", "#0d0"];
-export const GRASS_ELEMENT_NAME = "g-grass";
+import { TILE_SELECTOR } from "../../constants/tile";
+import { GRASS_COLORS, GRASS_ELEMENT_NAME } from "../../constants/grass";
 
 export class Grass extends Tile {
   constructor(biome: Biome, position: Position) {

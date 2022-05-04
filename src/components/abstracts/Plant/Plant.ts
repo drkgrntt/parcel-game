@@ -1,9 +1,7 @@
+import { PLANT_ELEMENT } from "../../../constants/plant";
 import { Position } from "../../../types";
 import { BaseElement } from "../BaseElement/BaseElement";
 import template from "./Plant.html";
-
-export const PLANT_SELECTOR = ".plant";
-export const PLANT_ELEMENT = "g-plant";
 
 export class Plant extends BaseElement {
   position: Position;

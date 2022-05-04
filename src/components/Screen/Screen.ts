@@ -1,18 +1,20 @@
 import template from "./Screen.html";
 import { BaseElement } from "../abstracts/BaseElement/BaseElement";
 import { Text, TEXT_ELEMENT_NAME } from "../Text/Text";
-import { WELCOME } from "../../utils/texts";
-import { BIOMES_SET_EVENT, Map, MAP_ELEMENT_NAME } from "../Map/Map";
+import { WELCOME } from "../../constants/texts";
+import { Map } from "../Map/Map";
 import { Player } from "../Player/Player";
 import { getRandom } from "../../utils";
-import { TILES_SET_EVENT } from "../abstracts/Biome/Biome";
 import { sendEvent } from "../../utils/events";
-
-export const SCREEN_HEIGHT = 40;
-export const SCREEN_WIDTH = 60;
-export const SCREEN_ELEMENT_NAME = "g-screen";
-export const SCREEN_SELECTOR = ".screen";
-export const GAME_READY_EVENT = "game-ready";
+import {
+  GAME_READY_EVENT,
+  SCREEN_ELEMENT_NAME,
+  SCREEN_HEIGHT,
+  SCREEN_SELECTOR,
+  SCREEN_WIDTH,
+} from "../../constants/screen";
+import { BIOMES_SET_EVENT, MAP_ELEMENT_NAME } from "../../constants/map";
+import { TILES_SET_EVENT } from "../../constants/biome";
 
 export class Screen extends BaseElement {
   // Visible area

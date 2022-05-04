@@ -1,9 +1,10 @@
 .map {
-  --height: 0;
-  --width: 0;
+  --height: var(--screen-height);
+  --width: var(--screen-width);
 
-  height: calc(var(--scale) * var(--height) * var(--tile-size));
-  width: calc(var(--scale) * var(--width) * var(--tile-size));
+  box-sizing: border-box;
+  height: calc(var(--unit) * var(--height));
+  width: calc(var(--unit) * var(--width));
 
   display: flex;
   flex-wrap: wrap;

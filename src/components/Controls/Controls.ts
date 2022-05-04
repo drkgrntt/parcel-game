@@ -1,18 +1,20 @@
+import {
+  AFTER_ZOOM_EVENT,
+  BEFORE_ZOOM_EVENT,
+  CONTROLS_ELEMENT,
+  SCALES,
+  ZOOM_IN_EVENT,
+  ZOOM_IN_SELECTOR,
+  ZOOM_OUT_EVENT,
+  ZOOM_OUT_SELECTOR,
+} from "../../constants/controls";
+import { SCREEN_ELEMENT_NAME, SCREEN_SELECTOR } from "../../constants/screen";
 import { sendEvent } from "../../utils/events";
 import { BaseElement } from "../abstracts/BaseElement/BaseElement";
-import { Screen, SCREEN_ELEMENT_NAME, SCREEN_SELECTOR } from "../Screen/Screen";
+import { Screen } from "../Screen/Screen";
 import template from "./Controls.html";
 import "./drag";
 import "./scroll";
-
-export const ZOOM_IN_SELECTOR = ".zoom.in";
-export const ZOOM_OUT_SELECTOR = ".zoom.out";
-export const ZOOM_IN_EVENT = "zoom-in";
-export const ZOOM_OUT_EVENT = "zoom-out";
-export const BEFORE_ZOOM_EVENT = "before-zoom";
-export const AFTER_ZOOM_EVENT = "after-zoom";
-export const SCALES = [0.4, 0.6, 0.8, 1, 1.5, 2, 3, 4];
-export const CONTROLS_ELEMENT = "g-controls";
 
 class Controls extends BaseElement {
   #scaleIndex = SCALES.indexOf(1);

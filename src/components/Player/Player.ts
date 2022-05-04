@@ -1,7 +1,6 @@
-import { TILE_SELECTED_EVENT } from "../abstracts/Tile/Tile";
+import { PLAYER_ELEMENT_NAME } from "../../constants/player";
+import { TILE_SELECTED_EVENT } from "../../constants/tile";
 import { Pawn } from "../Pawn/Pawn";
-
-export const PLAYER_ELEMENT_NAME = "g-player";
 
 export class Player extends Pawn {
   templateSetCallback(): void {
