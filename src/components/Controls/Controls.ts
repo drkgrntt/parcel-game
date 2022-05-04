@@ -16,7 +16,7 @@ import template from "./Controls.html";
 import "./drag";
 import "./scroll";
 
-class Controls extends BaseElement {
+export class Controls extends BaseElement {
   #scaleIndex = SCALES.indexOf(1);
 
   constructor() {
@@ -29,6 +29,10 @@ class Controls extends BaseElement {
     this.#addScrollListener();
   }
 
+  get scale() {
+    return SCALES[this.#scaleIndex];
+  }
+
   #addScrollListener() {
     this.createEventListener(ZOOM_IN_EVENT, this.#zoomIn.bind(this), this);
     this.createEventListener(ZOOM_OUT_EVENT, this.#zoomOut.bind(this), this);
@@ -37,13 +41,13 @@ class Controls extends BaseElement {
   #addButtonControls() {
     this.createEventListener(
       "click",
-      this.#zoomIn.bind(this),
+      () => sendEvent(ZOOM_IN_EVENT, null, this),
       this.shadowRoot.querySelector(ZOOM_IN_SELECTOR)
     );
 
     this.createEventListener(
       "click",
-      this.#zoomOut.bind(this),
+      () => sendEvent(ZOOM_OUT_EVENT, null, this),
       this.shadowRoot.querySelector(ZOOM_OUT_SELECTOR)
     );
   }

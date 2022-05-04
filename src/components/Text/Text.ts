@@ -1,8 +1,15 @@
+import {
+  CONTROLS_ELEMENT,
+  ZOOM_IN_EVENT,
+  ZOOM_OUT_EVENT,
+} from "../../constants/controls";
+import {
+  TEXT_CONTAINER_SELECTOR,
+  TEXT_ELEMENT_NAME,
+} from "../../constants/text";
 import { BaseElement } from "../abstracts/BaseElement/BaseElement";
+import { Controls } from "../Controls/Controls";
 import template from "./Text.html";
-
-export const TEXT_ELEMENT_NAME = "g-text";
-export const TEXT_CONTAINER_SELECTOR = ".text-container";
 
 export class Text extends BaseElement {
   #textSlot: HTMLSlotElement;
@@ -71,6 +78,33 @@ export class Text extends BaseElement {
   templateSetCallback(): void {
     this.#textSlot = this.shadowRoot.querySelector("slot");
     this.#updateText();
+    this.#handleZoomEvents();
+  }
+
+  #handleZoomEvents() {
+    const controls = document.querySelector<Controls>(CONTROLS_ELEMENT);
+    this.createEventListener(
+      ZOOM_IN_EVENT,
+      this.#setPosition.bind(this),
+      controls
+    );
+    this.createEventListener(
+      ZOOM_OUT_EVENT,
+      this.#setPosition.bind(this),
+      controls
+    );
+  }
+
+  #setPosition() {
+    const controls = document.querySelector<Controls>(CONTROLS_ELEMENT);
+    const textBox = this.shadowRoot.querySelector<HTMLDivElement>(
+      TEXT_CONTAINER_SELECTOR
+    );
+    if (controls.scale > 1) {
+      textBox.style.setProperty("--position", "sticky");
+    } else {
+      textBox.style.setProperty("--position", "absolute");
+    }
   }
 }
 

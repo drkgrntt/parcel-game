@@ -7,21 +7,26 @@
 .text-container {
   pointer-events: none;
   z-index: 9999;
-  position: absolute;
-  bottom: 2rem;
+  bottom: calc(2 * var(--tile-size));
   left: 50%;
   transform: translateX(-50%);
   width: 70%;
   box-sizing: border-box;
 
+  --position: absolute;
+  position: var(--position);
+
   /* Visibility */
   --display: none;
   display: var(--display);
+  /* display: flex; */
 
   background-color: var(--dark-grey);
-  height: 6rem;
-  padding: 2rem;
+  height: calc(6 * var(--tile-size));
+  padding: calc(2 * var(--tile-size));
   justify-content: center;
   align-items: center;
-  border-radius: 1rem;
+  border-radius: var(--tile-size);
+
+  margin-top: calc(-8 * var(--tile-size));
 }

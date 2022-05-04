@@ -1,7 +1,7 @@
 import template from "./Screen.html";
 import { BaseElement } from "../abstracts/BaseElement/BaseElement";
-import { Text, TEXT_ELEMENT_NAME } from "../Text/Text";
-import { WELCOME } from "../../constants/texts";
+import { Text } from "../Text/Text";
+import { WELCOME, TEXT_ELEMENT_NAME } from "../../constants/text";
 import { Map } from "../Map/Map";
 import { Player } from "../Player/Player";
 import { getRandom } from "../../utils";
