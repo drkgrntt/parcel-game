@@ -78,6 +78,7 @@ export class Text extends BaseElement {
   }
 
   templateSetCallback(): void {
+    super.templateSetCallback();
     this.#textSlot = this.shadowRoot.querySelector("slot");
     this.#updateText();
     this.#handleZoomEvents();

@@ -51,6 +51,7 @@ export class Map extends BaseElement {
   }
 
   templateSetCallback(): void {
+    super.templateSetCallback();
     this.height = this.#height;
     this.width = this.#width;
     this.time = this.#time;

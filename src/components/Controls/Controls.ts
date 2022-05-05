@@ -1,4 +1,3 @@
-import { TIME_CHANGE_EVENT } from "../../constants/map";
 import {
   AFTER_ZOOM_EVENT,
   BEFORE_ZOOM_EVENT,
@@ -27,21 +26,19 @@ export class Controls extends BaseElement {
   }
 
   templateSetCallback(): void {
+    super.templateSetCallback();
     this.#addButtonControls();
     this.#addScrollListener();
-    this.#showTime();
   }
 
   get scale() {
     return SCALES[this.#scaleIndex];
   }
 
-  #showTime() {
-    this.createEventListener(TIME_CHANGE_EVENT, (event: CustomEvent) => {
-      this.shadowRoot
-        .querySelector<HTMLParagraphElement>(TIME_SELECTOR)
-        .querySelector("span").innerText = event.detail.time;
-    });
+  handleTimePassage(time: number): void {
+    this.shadowRoot
+      .querySelector<HTMLParagraphElement>(TIME_SELECTOR)
+      .querySelector("span").innerText = time.toString();
   }
 
   #addScrollListener() {

@@ -52,6 +52,7 @@ export class Tile extends BaseElement {
   }
 
   templateSetCallback(): void {
+    super.templateSetCallback();
     this.setClickHandler();
     this.#setRelativePositionInfo();
     this.#setAdjacentTiles();

@@ -40,6 +40,7 @@ export class Screen extends BaseElement {
   }
 
   templateSetCallback(): void {
+    super.templateSetCallback();
     this.height = this.#height;
     this.width = this.#width;
 

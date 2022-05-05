@@ -60,6 +60,7 @@ export class Pawn extends BaseElement {
   }
 
   templateSetCallback(): void {
+    super.templateSetCallback();
     this.position = this.position; // Set the CSS
     this.speed = this.speed; // Set the CSS
 

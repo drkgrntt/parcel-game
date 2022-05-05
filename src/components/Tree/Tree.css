@@ -1,10 +1,10 @@
-.plant {
+.tree {
   --color: #00aa00;
   --trunk-color: #6c0909;
 }
 
 /* Leaves */
-.plant::after {
+.tree::after {
   content: "";
 
   display: block;
@@ -21,7 +21,7 @@
 }
 
 /* Trunk */
-.plant::before {
+.tree::before {
   content: "";
 
   display: block;

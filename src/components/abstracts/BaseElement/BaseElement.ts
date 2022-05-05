@@ -1,3 +1,4 @@
+import { TIME_CHANGE_EVENT } from "../../../constants/map";
 import { TEMPLATE_SET_EVENT } from "../../../constants/baseElement";
 import { sendEvent } from "../../../utils/events";
 import { getTemplate } from "../../../utils/templates";
@@ -44,7 +45,16 @@ export abstract class BaseElement extends HTMLElement {
     });
   }
 
-  templateSetCallback(): void {}
+  templateSetCallback(): void {
+    this.createEventListener(
+      TIME_CHANGE_EVENT,
+      (event: CustomEvent<{ time: number }>) => {
+        this.handleTimePassage(event.detail.time);
+      }
+    );
+  }
+
+  handleTimePassage(time: number): void {}
 
   disonnectedCallback() {
     this.destroy();

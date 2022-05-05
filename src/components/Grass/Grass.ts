@@ -2,9 +2,10 @@ import { Position } from "../../types";
 import { getBySeed, getRandom, range } from "../../utils";
 import { Tile } from "../abstracts/Tile/Tile";
 import { Biome } from "../abstracts/Biome/Biome";
-import { Plant } from "../abstracts/Plant/Plant";
+import { Tree } from "../Tree/Tree";
 import { TILE_SELECTOR } from "../../constants/tile";
 import { GRASS_COLORS, GRASS_ELEMENT_NAME } from "../../constants/grass";
+import { MATURITY_LIMIT } from "../../constants/plant";
 
 export class Grass extends Tile {
   constructor(biome: Biome, position: Position) {
@@ -29,7 +30,7 @@ export class Grass extends Tile {
     const hasTree = getBySeed(range(100)) === (x * y) % 100;
 
     if (hasTree) {
-      const tree = new Plant(this.position);
+      const tree = new Tree(this.position, MATURITY_LIMIT / 2);
       this.holding.push(tree);
       this.shadowRoot
         .querySelector<HTMLDivElement>(TILE_SELECTOR)
