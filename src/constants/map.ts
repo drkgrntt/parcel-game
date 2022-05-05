@@ -12,4 +12,4 @@ export const STARTING_TIME = 9;
 
 const params = new URLSearchParams(window.location.search);
 export const MAP_SEED = params.get("seed") ?? "default";
-export const MAP_SEED_HASH = hashStringToNumber(MAP_SEED);
+export const MAP_SEED_HASH = Math.abs(hashStringToNumber(MAP_SEED));
