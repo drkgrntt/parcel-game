@@ -56,3 +56,7 @@ export const weighArray = <T>(arr: T[], weights: number[]): T[] => {
     return newArr;
   }, []);
 };
+
+export const range = (size: number): number[] => {
+  return [...Array(size).keys()];
+};

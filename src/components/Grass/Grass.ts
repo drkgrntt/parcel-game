@@ -1,5 +1,5 @@
 import { Position } from "../../types";
-import { getRandom, getRandomNumber } from "../../utils";
+import { getBySeed, getRandom, range } from "../../utils";
 import { Tile } from "../abstracts/Tile/Tile";
 import { Biome } from "../abstracts/Biome/Biome";
 import { Plant } from "../abstracts/Plant/Plant";
@@ -25,7 +25,10 @@ export class Grass extends Tile {
   }
 
   #setVegitation() {
-    if (getRandomNumber(100) === 1) {
+    const [x, y] = this.position;
+    const hasTree = getBySeed(range(100)) === (x * y) % 100;
+
+    if (hasTree) {
       const tree = new Plant(this.position);
       this.holding.push(tree);
       this.shadowRoot

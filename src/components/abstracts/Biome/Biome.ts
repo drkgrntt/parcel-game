@@ -1,6 +1,6 @@
 import { Adjacents, Position, RelativePositionInfo } from "../../../types";
 import { BaseElement } from "../BaseElement/BaseElement";
-import { Tile, TileType } from "../Tile/Tile";
+import { Tile } from "../Tile/Tile";
 import template from "./Biome.html";
 import { Map } from "../../Map/Map";
 import { sendEvent } from "../../../utils/events";
@@ -14,6 +14,7 @@ import {
   MAP_HEIGHT_IN_BIOMES,
   MAP_WIDTH_IN_BIOMES,
 } from "../../../constants/biome";
+import { TileType } from "../../../constants/tile";
 
 export class Biome extends BaseElement {
   // Biome size
