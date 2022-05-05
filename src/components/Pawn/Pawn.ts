@@ -11,6 +11,7 @@ import { PAWN_ELEMENT_NAME, PAWN_SELECTOR } from "../../constants/pawn";
 
 export class Pawn extends BaseElement {
   #destination: Position = [];
+  #traveled: Position[] = [];
   #position: Position = [];
   #speed: PawnSpeed = 5;
   #movementTimeout: number;
@@ -31,6 +32,7 @@ export class Pawn extends BaseElement {
 
   set position([x, y]: Position) {
     this.#position = [x, y];
+    this.#traveled.push(this.#position);
     const pawn = this.shadowRoot.querySelector<HTMLDivElement>(PAWN_SELECTOR);
     pawn?.style.setProperty("--x", x.toString());
     pawn?.style.setProperty("--y", y.toString());
@@ -53,6 +55,7 @@ export class Pawn extends BaseElement {
   set destination(d: Position) {
     clearTimeout(this.#movementTimeout);
     this.#destination = d;
+    this.#traveled.push(this.#position);
     this.move();
   }
 
@@ -106,46 +109,84 @@ export class Pawn extends BaseElement {
   }
 
   move() {
-    let tile = this.#getNextTile();
+    let nextTile = this.#getNextTile();
+    const [tx, ty] = nextTile.position;
     const [posX, posY] = this.position;
+
+    if (tx === posX && ty === posY) {
+      return this.stop();
+    }
 
     // TODO: Varying levels of passibility
     // Attempt to not change the y or x.
     // This helps diagonal pathing
-    if (!tile.isPassable) {
-      let newTile = Object.values(this.#tile.adjacentTiles).find(
+    if (!nextTile.isPassable) {
+      // Adjust horizontally when walking diagonally
+      let newNextTile = Object.values(this.#tile.adjacentTiles).find(
         ({ position: [x, y] }) => {
-          const [tx, ty] = tile.position;
           return x === tx - (tx - posX) && y === ty;
         }
       );
 
-      if (!newTile?.isPassable) {
-        newTile = Object.values(this.#tile.adjacentTiles).find(
+      if (!newNextTile?.isPassable) {
+        // Adjust vertically when walking diagonally
+        newNextTile = Object.values(this.#tile.adjacentTiles).find(
           ({ position: [x, y] }) => {
-            const [tx, ty] = tile.position;
             return x === tx && y === ty - (ty - posY);
           }
         );
 
-        if (!newTile?.isPassable) {
-          return this.stop();
+        if (!newNextTile?.isPassable) {
+          // Adjust diagonally south when walking horizontally
+          newNextTile = Object.values(this.#tile.adjacentTiles).find(
+            ({ position: [x, y] }) => {
+              return x === tx && y === ty + 1;
+            }
+          );
+
+          if (!newNextTile?.isPassable) {
+            // Adjust diagonally north when walking horizontally
+            newNextTile = Object.values(this.#tile.adjacentTiles).find(
+              ({ position: [x, y] }) => {
+                return x === tx && y === ty - 1;
+              }
+            );
+
+            if (!newNextTile?.isPassable) {
+              // Adjust diagonally east when walking vertically
+              newNextTile = Object.values(this.#tile.adjacentTiles).find(
+                ({ position: [x, y] }) => {
+                  return x === tx + 1 && y === ty;
+                }
+              );
+
+              if (!newNextTile?.isPassable) {
+                // Adjust diagonally west when walking vertically
+                newNextTile = Object.values(this.#tile.adjacentTiles).find(
+                  ({ position: [x, y] }) => {
+                    return x === tx - 1 && y === ty;
+                  }
+                );
+
+                if (!newNextTile?.isPassable) {
+                  // We're lost.
+                  return this.stop();
+                }
+              }
+            }
+          }
         }
       }
 
-      tile = newTile;
+      nextTile = newNextTile;
     }
 
-    const [x, y] = tile.position;
-
-    if (x === posX && y === posY) {
-      return this.stop();
-    }
+    const [x, y] = nextTile.position;
 
     sendEvent(`${POSITION_ENTER_EVENT}-${x}-${y}`, this);
     sendEvent(`${POSITION_EXIT_EVENT}-${posX}-${posY}`, this);
-    this.#tile = tile;
-    this.position = tile.position;
+    this.#tile = nextTile;
+    this.position = nextTile.position;
     this.#movementTimeout = setTimeout(
       () => this.move(),
       100 * (10 - this.#speed)
@@ -154,6 +195,7 @@ export class Pawn extends BaseElement {
 
   stop() {
     this.#destination = [];
+    this.#traveled = [];
   }
 }
 

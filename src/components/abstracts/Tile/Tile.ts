@@ -39,12 +39,14 @@ export class Tile extends BaseElement {
       `${POSITION_ENTER_EVENT}-${x}-${y}`,
       (event: CustomEvent) => {
         this.holding.push(event.detail);
+        this.isPassable = false;
       }
     );
     this.createEventListener(
       `${POSITION_EXIT_EVENT}-${x}-${y}`,
       (event: CustomEvent) => {
         this.holding.splice(this.holding.indexOf(event.detail));
+        this.isPassable = true;
       }
     );
   }
