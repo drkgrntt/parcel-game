@@ -12,5 +12,5 @@ Click the screen to move your pawn.
 Use the mouse wheel to zoom in and out. You can click and drag the screen around using the mouse wheel.
 It is very much a work in progress and there are many features to add.
 It is made using Typescript, vanilla web components, Parcel to bundle, and deployed on Netlify.
-There is no canvas. It does not use WebGL, so forgive performance. 
+There is no canvas. It does not use WebGL, so forgive performance.
 There is very much to be added. Enjoy :)`;
