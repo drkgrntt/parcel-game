@@ -28,8 +28,10 @@ export class Text extends BaseElement {
     if (value.length < 200) {
       this.#textQueue.push(value);
     } else {
-      for (const sentense of value.split(". ")) {
-        this.#textQueue.push(`${sentense}.`);
+      for (const line of value.split("\n")) {
+        for (const sentense of line.split(". ")) {
+          this.#textQueue.push(`${sentense}.`.replace("..", "."));
+        }
       }
     }
     this.#updateText();

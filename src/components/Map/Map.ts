@@ -9,14 +9,18 @@ import {
   MAP_HEIGHT,
   MAP_SELECTOR,
   MAP_WIDTH,
+  STARTING_TIME,
+  TIME_CHANGE_EVENT,
 } from "../../constants/map";
 import { BIOME_HEIGHT, BIOME_WIDTH } from "../../constants/biome";
 import { TileType, TILE_TYPES } from "../../constants/tile";
+import "./time";
 
 export class Map extends BaseElement {
   // Full map size, this can be bigger than the visible area
   #height = MAP_HEIGHT;
   #width = MAP_WIDTH;
+  #time = STARTING_TIME;
   biomes: Biome[] = [];
 
   constructor() {
@@ -36,10 +40,27 @@ export class Map extends BaseElement {
     map?.style.setProperty("--width", value.toString());
   }
 
+  set time(value: number) {
+    this.#time = value;
+    const map = this.shadowRoot.querySelector<HTMLDivElement>(MAP_SELECTOR);
+    map?.style.setProperty(
+      "--brightness",
+      (12 - Math.abs(value - 12)).toString()
+    );
+  }
+
   templateSetCallback(): void {
     this.height = this.#height;
     this.width = this.#width;
+    this.time = this.#time;
     this.#setBiomes();
+    this.#setTime();
+  }
+
+  #setTime() {
+    this.createEventListener(TIME_CHANGE_EVENT, (event: CustomEvent) => {
+      this.time = event.detail.time;
+    });
   }
 
   #setBiomes(): void {
