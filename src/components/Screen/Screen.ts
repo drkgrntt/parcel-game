@@ -4,7 +4,7 @@ import { Text } from "../Text/Text";
 import { WELCOME, TEXT_ELEMENT_NAME } from "../../constants/text";
 import { Map } from "../Map/Map";
 import { Player } from "../Player/Player";
-import { getRandom } from "../../utils";
+import { getBySeed } from "../../utils";
 import { sendEvent } from "../../utils/events";
 import {
   GAME_READY_EVENT,
@@ -55,11 +55,11 @@ export class Screen extends BaseElement {
       BIOMES_SET_EVENT,
       () => {
         // TODO: This should be based on passibility
-        const biome = getRandom(map.biomes, (biome) => biome.type !== "water");
+        const biome = getBySeed(map.biomes, (biome) => biome.type !== "water");
         this.createEventListener(
           TILES_SET_EVENT,
           () => {
-            const tile = getRandom(biome.tiles);
+            const tile = getBySeed(biome.tiles);
             const player = new Player(tile);
             map.appendChild(player);
 

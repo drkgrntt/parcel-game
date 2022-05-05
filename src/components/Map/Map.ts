@@ -1,12 +1,13 @@
 import template from "./Map.html";
 import { BaseElement } from "../abstracts/BaseElement/BaseElement";
 import { Biome } from "../abstracts/Biome/Biome";
-import { getRandom } from "../../utils";
+import { weighArray } from "../../utils";
 import { sendEvent } from "../../utils/events";
 import {
   BIOMES_SET_EVENT,
   MAP_ELEMENT_NAME,
   MAP_HEIGHT,
+  MAP_SEED_HASH,
   MAP_SELECTOR,
   MAP_WIDTH,
   STARTING_TIME,
@@ -67,7 +68,15 @@ export class Map extends BaseElement {
     const map = this.shadowRoot.querySelector(MAP_SELECTOR);
     for (let y = 0; y < Math.ceil(this.#height / BIOME_HEIGHT); y++) {
       for (let x = 0; x < Math.ceil(this.#width / BIOME_WIDTH); x++) {
-        const type = getRandom<TileType>(TILE_TYPES as unknown as TileType[]);
+        // const type = getRandom<TileType>(TILE_TYPES as unknown as TileType[]);
+        const randomizer = Math.floor(
+          (MAP_SEED_HASH / (x + 47)) * (MAP_SEED_HASH / (y + 13))
+        );
+        const weightedTypes = weighArray(
+          TILE_TYPES as unknown as TileType[], // Allow for readonly type
+          [30, 10, 10]
+        );
+        const type = weightedTypes[randomizer % weightedTypes.length];
         const biome = new Biome(this, [x, y], type);
         this.biomes.push(biome);
         map.appendChild(biome);
