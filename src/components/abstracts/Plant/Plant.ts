@@ -51,7 +51,6 @@ export class Plant extends BaseElement {
   }
 
   #grow(): void {
-    console.log(this._maturity, MATURITY_LIMIT);
     if (this._maturity >= MATURITY_LIMIT) return;
     const number = getRandomNumber(this.growthRate);
     this.maturity = this._maturity + number;
