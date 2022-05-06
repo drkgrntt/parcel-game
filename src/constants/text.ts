@@ -8,9 +8,10 @@ Nulla ac metus arcu. Proin blandit, velit non dictum dignissim, eros tellus dict
 Donec sed magna neque. Nunc suscipit accumsan quam. Curabitur iaculis purus at augue dictum luctus. Sed nibh libero, venenatis a sagittis id, malesuada a lacus. Duis volutpat vestibulum arcu sit amet porta. Vestibulum pharetra nulla nec risus ullamcorper, ac tempus tortor pretium. Curabitur ultricies leo vel congue laoreet. Pellentesque sagittis blandit consequat. Pellentesque tincidunt lectus non porttitor pellentesque. Praesent pharetra, ex in pharetra euismod, neque quam ultrices justo, in eleifend diam nisi id nisi.
 Pellentesque vitae porttitor velit. Nunc bibendum magna vel ante ultrices, a elementum urna euismod. Nullam non pulvinar nulla. Nunc in consequat risus. Etiam sollicitudin blandit aliquet. Curabitur diam erat, interdum in ullamcorper vel, hendrerit quis metus. Quisque at ante nibh. Quisque quam dolor, gravida in viverra eu, pharetra in tortor. Phasellus eget nulla nisl. Praesent id risus rutrum, tincidunt turpis porttitor, malesuada dolor. Duis rhoncus, lectus sit amet vehicula vulputate, ipsum lorem ornare felis, commodo condimentum dui odio in felis. Fusce eu nisl molestie, auctor nisl id, sodales diam. Aliquam dictum purus in gravida aliquam. Curabitur in nunc ut libero pharetra placerat. Pellentesque mattis sapien vel ex condimentum, sit amet vestibulum odio commodo. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.`;
 
-export const WELCOME = `Welcome to my game.
-Click the screen to move your pawn.
-Use the mouse wheel to zoom in and out. You can click and drag the screen around using the mouse wheel.
+export const WELCOME = `Click the screen to move your pawn.
+Use the mouse wheel or the buttons to zoom in and out.
+Click and drag the screen around using the mouse wheel.
+Right click items to select them.
 It is very much a work in progress and there are many features to add.
 It is made using Typescript, vanilla web components, Parcel to bundle, and deployed on Netlify.
 There is no canvas. It does not use WebGL, so forgive performance.
