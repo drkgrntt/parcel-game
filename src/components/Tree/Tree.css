@@ -1,35 +1,50 @@
 .tree {
   --color: #00aa00;
   --trunk-color: #6c0909;
+  --maturity: 0;
+  --maturity-dec: calc(var(--maturity) / 100);
+
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
 }
 
 /* Leaves */
 .tree::after {
   content: "";
 
+  --width: calc(var(--maturity-dec) * 1);
+  --height: calc(var(--maturity-dec) * 0.75);
+
   display: block;
   box-sizing: border-box;
   background-color: var(--color);
-  width: calc(0.7 * var(--unit));
-  height: calc(0.5 * var(--unit));
+  width: calc(var(--width) * var(--unit));
+  height: calc(var(--height) * var(--unit));
   border: calc(0.2 * var(--unit)) dotted var(--color);
   border-radius: 100rem;
   z-index: 2;
-  box-shadow: 1px 1px 5px var(--color);
-
-  transform: translate(calc(0.15 * var(--unit)), calc(-0.6 * var(--unit)));
+  box-shadow: 1px 1px 5px var(--black);
 }
 
 /* Trunk */
 .tree::before {
   content: "";
 
+  --width: calc(var(--maturity-dec) * 0.3);
+  --height: calc(var(--maturity-dec) * 0.7);
+
   display: block;
   background-color: var(--trunk-color);
-  width: calc(0.2 * var(--unit));
-  height: calc(0.5 * var(--unit));
+  width: calc(var(--width) * var(--unit));
+  height: calc(var(--height) * var(--unit));
   z-index: 2;
-  /* box-shadow: 1px 1px 5px var(--black); */
-
-  transform: translate(calc(0.4 * var(--unit)), calc(0.3 * var(--unit)));
+  box-shadow: 1px 1px 5px var(--black);
 }

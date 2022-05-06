@@ -6,7 +6,7 @@ import { BaseElement } from "../BaseElement/BaseElement";
 export class Plant extends BaseElement {
   position: Position;
   growthRate: GrowthRate = 0;
-  #maturity: number = 0;
+  protected _maturity: number = 0;
   #creationTime: number;
 
   constructor(
@@ -17,16 +17,20 @@ export class Plant extends BaseElement {
     super();
     this.position = position;
     this.growthRate = growthRate;
-    this.maturity = initialMaturity;
+    this._maturity = initialMaturity;
   }
 
   get maturity(): number {
-    return this.#maturity;
+    return this._maturity;
   }
 
   set maturity(value: number) {
-    this.#maturity = value;
-    // TODO: css stuff here
+    this._maturity = value;
+  }
+
+  templateSetCallback(): void {
+    super.templateSetCallback();
+    this.maturity = this.maturity;
   }
 
   handleTimePassage(time: number): void {
