@@ -4,6 +4,7 @@ import {
   ZOOM_OUT_EVENT,
 } from "../../constants/controls";
 import {
+  NEW_TEXT_EVENT,
   TEXT_CONTAINER_SELECTOR,
   TEXT_ELEMENT_NAME,
 } from "../../constants/text";
@@ -25,6 +26,7 @@ export class Text extends BaseElement {
   }
 
   set text(value: string) {
+    const textRunning = !!this.#textQueue.length;
     if (value.length < 200) {
       this.#textQueue.push(value);
     } else {
@@ -34,7 +36,8 @@ export class Text extends BaseElement {
         }
       }
     }
-    this.#updateText();
+
+    if (!textRunning) this.#updateText();
   }
 
   #disappear() {
@@ -82,6 +85,14 @@ export class Text extends BaseElement {
     this.#textSlot = this.shadowRoot.querySelector("slot");
     this.#updateText();
     this.#handleZoomEvents();
+    this.#listenForText();
+  }
+
+  #listenForText() {
+    this.createEventListener(
+      NEW_TEXT_EVENT,
+      (event: CustomEvent<string>) => (this.text = event.detail)
+    );
   }
 
   #handleZoomEvents() {

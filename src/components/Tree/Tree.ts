@@ -1,4 +1,3 @@
-import { Position } from "../../types";
 import { Plant } from "../abstracts/Plant/Plant";
 import {
   HARVEST_TREE_EVENT,
@@ -14,6 +13,7 @@ import { sendEvent } from "../../utilities/events";
 import { ITEM_SELECTED } from "../../constants/controls";
 import { Pawn } from "../Pawn/Pawn";
 import { Tile } from "../abstracts/Tile/Tile";
+import { NEW_TEXT_EVENT } from "../../constants/text";
 
 export class Tree extends Plant {
   name = "Tree";
@@ -70,7 +70,11 @@ export class Tree extends Plant {
       }
       pawn.inventory[TREE_RESOURCES.TREE_SEEDS] += harvestedAmount;
 
-      // this.parentNode.removeChild(this);
+      sendEvent(
+        NEW_TEXT_EVENT,
+        `You have acquired ${harvestedAmount} wood and tree seeds.`
+      );
+
       this.remove();
       sendEvent(ITEM_SELECTED);
     };
