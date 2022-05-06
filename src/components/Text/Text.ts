@@ -37,7 +37,7 @@ export class Text extends BaseElement {
       }
     }
 
-    if (!textRunning) this.#updateText();
+    if (!textRunning || !this.#textSlot.textContent) this.#updateText();
   }
 
   #disappear() {

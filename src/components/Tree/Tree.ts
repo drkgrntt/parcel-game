@@ -77,7 +77,7 @@ export class Tree extends Plant {
       );
 
       this.remove();
-      sendEvent(ITEM_SELECTED);
+      if (this._selected) sendEvent(ITEM_SELECTED);
     };
     sendEvent(HARVEST_TREE_EVENT, { item: this, callback: handlePawn });
   }
