@@ -7,3 +7,5 @@ export const AFTER_ZOOM_EVENT = "after-zoom";
 export const SCALES = [0.4, 0.6, 0.8, 1, 1.5, 2, 3, 4];
 export const CONTROLS_ELEMENT = "g-controls";
 export const TIME_SELECTOR = ".time";
+export const ITEM_SELECTED = "item-selected";
+export const SELECTED_CONTAINER_SELECTOR = ".selected";

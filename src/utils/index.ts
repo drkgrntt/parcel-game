@@ -1,4 +1,4 @@
-import { MAP_SEED_HASH } from "../constants/map";
+import { MAP_SEED } from "../constants/map";
 
 export const getRandom = <T>(
   arr: T[],
@@ -14,13 +14,17 @@ export const getRandom = <T>(
   return item;
 };
 
+export const getMapSeedHash = (): number => {
+  return Math.abs(hashStringToNumber(MAP_SEED));
+};
+
 export const getBySeed = <T>(
   arr: T[],
   isAcceptable?: (found: T) => boolean,
   modifier: number = 0
 ): T => {
   if (modifier >= arr.length) modifier = 0;
-  const item = arr[(MAP_SEED_HASH % arr.length) + modifier];
+  const item = arr[(getMapSeedHash() % arr.length) + modifier];
   if (isAcceptable) {
     return isAcceptable(item)
       ? item
@@ -59,4 +63,8 @@ export const weighArray = <T>(arr: T[], weights: number[]): T[] => {
 
 export const range = (size: number): number[] => {
   return [...Array(size).keys()];
+};
+
+export const capitalizeFirstLetter = (text: string): string => {
+  return text.charAt(0).toUpperCase() + text.slice(1);
 };

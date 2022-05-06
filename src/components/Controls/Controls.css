@@ -6,6 +6,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  font-family: "Courier New", Courier, monospace;
 }
 
 .zoom {
@@ -21,10 +22,22 @@
 .zoom.out {
 }
 
+.selected {
+  box-sizing: border-box;
+  background-color: var(--white);
+  height: 5rem;
+  width: 10rem;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+}
+
+.selected p {
+  margin: 0;
+}
+
 .time {
   background-color: var(--white);
   display: inline;
-  font-family: "Courier New", Courier, monospace;
   padding: 0.5rem;
   border-radius: 0.5rem;
   margin-left: auto;

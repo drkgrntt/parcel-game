@@ -15,6 +15,7 @@ import {
 } from "../../constants/screen";
 import { BIOMES_SET_EVENT, MAP_ELEMENT_NAME } from "../../constants/map";
 import { TILES_SET_EVENT } from "../../constants/biome";
+import { ITEM_SELECTED } from "../../constants/controls";
 
 export class Screen extends BaseElement {
   // Visible area
@@ -48,6 +49,15 @@ export class Screen extends BaseElement {
     text.text = WELCOME;
 
     this.#setPlayer();
+
+    this.createEventListener(
+      "contextmenu",
+      (e) => {
+        e.preventDefault();
+        sendEvent(ITEM_SELECTED);
+      },
+      this
+    );
   }
 
   #setPlayer(): void {

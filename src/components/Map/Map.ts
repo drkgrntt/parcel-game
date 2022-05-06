@@ -1,13 +1,12 @@
 import template from "./Map.html";
 import { BaseElement } from "../abstracts/BaseElement/BaseElement";
 import { Biome } from "../abstracts/Biome/Biome";
-import { weighArray } from "../../utils";
+import { getMapSeedHash, weighArray } from "../../utils";
 import { sendEvent } from "../../utils/events";
 import {
   BIOMES_SET_EVENT,
   MAP_ELEMENT_NAME,
   MAP_HEIGHT,
-  MAP_SEED_HASH,
   MAP_SELECTOR,
   MAP_WIDTH,
   STARTING_TIME,
@@ -71,7 +70,7 @@ export class Map extends BaseElement {
       for (let x = 0; x < Math.ceil(this.#width / BIOME_WIDTH); x++) {
         // const type = getRandom<TileType>(TILE_TYPES as unknown as TileType[]);
         const randomizer = Math.floor(
-          (MAP_SEED_HASH / (x + 47)) * (MAP_SEED_HASH / (y + 13))
+          (getMapSeedHash() / (x + 47)) * (getMapSeedHash() / (y + 13))
         );
         const weightedTypes = weighArray(
           TILE_TYPES as unknown as TileType[], // Allow for readonly type

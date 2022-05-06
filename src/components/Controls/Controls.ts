@@ -1,8 +1,11 @@
+import { capitalizeFirstLetter } from "../../utils";
 import {
   AFTER_ZOOM_EVENT,
   BEFORE_ZOOM_EVENT,
   CONTROLS_ELEMENT,
+  ITEM_SELECTED,
   SCALES,
+  SELECTED_CONTAINER_SELECTOR,
   TIME_SELECTOR,
   ZOOM_IN_EVENT,
   ZOOM_IN_SELECTOR,
@@ -19,6 +22,7 @@ import "./scroll";
 
 export class Controls extends BaseElement {
   #scaleIndex = SCALES.indexOf(1);
+  #selected;
 
   constructor() {
     super();
@@ -29,10 +33,38 @@ export class Controls extends BaseElement {
     super.templateSetCallback();
     this.#addButtonControls();
     this.#addScrollListener();
+    this.#addSelectedListener();
   }
 
   get scale() {
     return SCALES[this.#scaleIndex];
+  }
+
+  set selected(value) {
+    this.#selected = value;
+    const container = this.shadowRoot.querySelector<HTMLDivElement>(
+      SELECTED_CONTAINER_SELECTOR
+    );
+    container.innerHTML = "";
+
+    if (!this.#selected) return;
+
+    const name = document.createElement("p");
+    name.textContent = this.#selected.name;
+    container.appendChild(name);
+
+    this.#selected.actions.forEach((action: string) => {
+      const button = document.createElement("button");
+      button.textContent = capitalizeFirstLetter(action);
+      button.onclick = this.#selected[action].bind(this.#selected);
+      container.appendChild(button);
+    });
+  }
+
+  #addSelectedListener() {
+    this.createEventListener(ITEM_SELECTED, (event: CustomEvent) => {
+      this.selected = event.detail;
+    });
   }
 
   handleTimePassage(time: number): void {
