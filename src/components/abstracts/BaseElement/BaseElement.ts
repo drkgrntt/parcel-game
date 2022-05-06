@@ -59,7 +59,7 @@ export abstract class BaseElement extends HTMLElement {
 
   handleTimePassage(time: number): void {}
 
-  disonnectedCallback() {
+  disconnectedCallback() {
     this.destroy();
   }
 

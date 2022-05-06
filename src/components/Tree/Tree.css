@@ -14,6 +14,11 @@
   left: 50%;
   transform: translateX(-50%);
   z-index: 2;
+
+  /* selected */
+  --selected: 0 0 10px 3px var(--white);
+  --unselected: 1px 1px 5px var(--black);
+  --box-shadow: var(--unselected);
 }
 
 /* Leaves */
@@ -31,7 +36,7 @@
   border: calc(0.2 * var(--unit)) dotted var(--color);
   border-radius: 100rem;
   z-index: 2;
-  box-shadow: 1px 1px 5px var(--black);
+  box-shadow: var(--box-shadow);
 }
 
 /* Trunk */
@@ -46,5 +51,5 @@
   width: calc(var(--width) * var(--unit));
   height: calc(var(--height) * var(--unit));
   z-index: 2;
-  box-shadow: 1px 1px 5px var(--black);
+  box-shadow: var(--box-shadow);
 }

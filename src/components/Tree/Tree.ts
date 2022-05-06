@@ -13,14 +13,16 @@ import { MATURITY_LIMIT } from "../../constants/plant";
 import { sendEvent } from "../../utilities/events";
 import { ITEM_SELECTED } from "../../constants/controls";
 import { Pawn } from "../Pawn/Pawn";
+import { Tile } from "../abstracts/Tile/Tile";
 
 export class Tree extends Plant {
   name = "Tree";
   actions = ["harvest"];
 
-  constructor(position: Position, initialMaturity: number = 0) {
-    super(position, TREE_GROWTH_RATE, initialMaturity);
+  constructor(tile: Tile, initialMaturity: number = 0) {
+    super(tile, TREE_GROWTH_RATE, initialMaturity);
     this.template = template;
+    tile.isPassable = false;
   }
 
   get maturity(): number {
@@ -33,6 +35,18 @@ export class Tree extends Plant {
     this.shadowRoot
       .querySelector<HTMLDivElement>(TREE_SELECTOR)
       ?.style.setProperty("--maturity", size.toString());
+  }
+
+  get selected(): boolean {
+    return this._selected;
+  }
+
+  set selected(value: boolean) {
+    this._selected = value;
+    const selectedVar = this._selected ? "--selected" : "--unselected";
+    this.shadowRoot
+      .querySelector<HTMLDivElement>(TREE_SELECTOR)
+      ?.style.setProperty("--box-shadow", `var(${selectedVar})`);
   }
 
   harvest() {
@@ -56,6 +70,7 @@ export class Tree extends Plant {
       }
       pawn.inventory[TREE_RESOURCES.TREE_SEEDS] += harvestedAmount;
 
+      // this.parentNode.removeChild(this);
       this.remove();
       sendEvent(ITEM_SELECTED);
     };
@@ -64,6 +79,10 @@ export class Tree extends Plant {
 
   templateSetCallback(): void {
     super.templateSetCallback();
+    this.#handleSelect();
+  }
+
+  #handleSelect() {
     this.createEventListener(
       "contextmenu",
       (event) => {
@@ -73,6 +92,19 @@ export class Tree extends Plant {
       },
       this
     );
+
+    this.createEventListener(ITEM_SELECTED, (event: CustomEvent<Tree>) => {
+      if (event.detail === this) {
+        this.selected = true;
+      } else if (this._selected) {
+        this.selected = false;
+      }
+    });
+  }
+
+  disconnectedCallback(): void {
+    super.disconnectedCallback();
+    this.tile.isPassable = true;
   }
 }
 

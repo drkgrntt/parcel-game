@@ -30,12 +30,10 @@ export class Grass extends Tile {
     const hasTree = getBySeed(range(100)) === (x * y) % 100;
 
     if (hasTree) {
-      const tree = new Tree(this.position, MATURITY_LIMIT / 2);
-      this.holding.push(tree);
+      const tree = new Tree(this, MATURITY_LIMIT / 2);
       this.shadowRoot
         .querySelector<HTMLDivElement>(TILE_SELECTOR)
         .appendChild(tree);
-      this.isPassable = false;
     }
   }
 }
