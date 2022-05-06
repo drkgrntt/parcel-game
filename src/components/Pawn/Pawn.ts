@@ -2,7 +2,7 @@ import { BaseElement } from "../abstracts/BaseElement/BaseElement";
 import template from "./Pawn.html";
 import { PawnSpeed, Position } from "../../types";
 import { Tile } from "../abstracts/Tile/Tile";
-import { sendEvent } from "../../utils/events";
+import { sendEvent } from "../../utilities/events";
 import {
   POSITION_ENTER_EVENT,
   POSITION_EXIT_EVENT,

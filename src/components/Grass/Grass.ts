@@ -1,5 +1,5 @@
 import { Position } from "../../types";
-import { getBySeed, getRandom, range } from "../../utils";
+import { getBySeed, getRandom, range } from "../../utilities";
 import { Tile } from "../abstracts/Tile/Tile";
 import { Biome } from "../abstracts/Biome/Biome";
 import { Tree } from "../Tree/Tree";

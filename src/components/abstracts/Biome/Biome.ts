@@ -3,7 +3,7 @@ import { BaseElement } from "../BaseElement/BaseElement";
 import { Tile } from "../Tile/Tile";
 import template from "./Biome.html";
 import { Map } from "../../Map/Map";
-import { sendEvent } from "../../../utils/events";
+import { sendEvent } from "../../../utilities/events";
 import {
   BIOME_ELEMENT_NAME,
   BIOME_HEIGHT,

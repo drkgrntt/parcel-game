@@ -1,5 +1,5 @@
 import { Position } from "../../types";
-import { getRandom } from "../../utils";
+import { getRandom } from "../../utilities";
 import { Tile } from "../abstracts/Tile/Tile";
 import { Biome } from "../abstracts/Biome/Biome";
 import { WATER_COLORS, WATER_ELEMENT_NAME } from "../../constants/water";

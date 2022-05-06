@@ -1,8 +1,8 @@
 import template from "./Map.html";
 import { BaseElement } from "../abstracts/BaseElement/BaseElement";
 import { Biome } from "../abstracts/Biome/Biome";
-import { getMapSeedHash, weighArray } from "../../utils";
-import { sendEvent } from "../../utils/events";
+import { getMapSeedHash, weighArray } from "../../utilities";
+import { sendEvent } from "../../utilities/events";
 import {
   BIOMES_SET_EVENT,
   MAP_ELEMENT_NAME,

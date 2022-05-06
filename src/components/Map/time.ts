@@ -1,5 +1,5 @@
 import { STARTING_TIME, TIME_CHANGE_EVENT } from "../../constants/map";
-import { sendEvent } from "../../utils/events";
+import { sendEvent } from "../../utilities/events";
 import { GAME_READY_EVENT } from "../../constants/screen";
 
 let interval: number;

@@ -1,6 +1,6 @@
 import { BaseElement } from "../BaseElement/BaseElement";
 import template from "./Tile.html";
-import { sendEvent } from "../../../utils/events";
+import { sendEvent } from "../../../utilities/events";
 import { Adjacents, Position, RelativePositionInfo } from "../../../types";
 import { Biome } from "../Biome/Biome";
 import {

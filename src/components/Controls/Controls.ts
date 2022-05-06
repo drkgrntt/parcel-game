@@ -1,4 +1,4 @@
-import { capitalizeFirstLetter } from "../../utils";
+import { capitalizeFirstLetter } from "../../utilities";
 import {
   AFTER_ZOOM_EVENT,
   BEFORE_ZOOM_EVENT,
@@ -13,7 +13,7 @@ import {
   ZOOM_OUT_SELECTOR,
 } from "../../constants/controls";
 import { SCREEN_ELEMENT_NAME, SCREEN_SELECTOR } from "../../constants/screen";
-import { sendEvent } from "../../utils/events";
+import { sendEvent } from "../../utilities/events";
 import { BaseElement } from "../abstracts/BaseElement/BaseElement";
 import { Screen } from "../Screen/Screen";
 import template from "./Controls.html";

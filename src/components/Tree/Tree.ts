@@ -10,7 +10,7 @@ import {
 } from "../../constants/tree";
 import template from "./Tree.html";
 import { MATURITY_LIMIT } from "../../constants/plant";
-import { sendEvent } from "../../utils/events";
+import { sendEvent } from "../../utilities/events";
 import { ITEM_SELECTED } from "../../constants/controls";
 import { Pawn } from "../Pawn/Pawn";
 

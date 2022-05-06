@@ -1,4 +1,4 @@
-import { hashStringToNumber } from "../utils";
+import { hashStringToNumber } from "../utilities";
 import { SCREEN_HEIGHT, SCREEN_WIDTH } from "./screen";
 
 export const MAP_HEIGHT = SCREEN_HEIGHT;

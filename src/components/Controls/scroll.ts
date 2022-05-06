@@ -1,4 +1,4 @@
-import { sendEvent } from "../../utils/events";
+import { sendEvent } from "../../utilities/events";
 import { Screen } from "../Screen/Screen";
 import { ZOOM_IN_EVENT, ZOOM_OUT_EVENT } from "../../constants/controls";
 import { GAME_READY_EVENT, SCREEN_SELECTOR } from "../../constants/screen";

@@ -4,8 +4,8 @@ import { Text } from "../Text/Text";
 import { WELCOME, TEXT_ELEMENT_NAME } from "../../constants/text";
 import { Map } from "../Map/Map";
 import { Player } from "../Player/Player";
-import { getBySeed } from "../../utils";
-import { sendEvent } from "../../utils/events";
+import { getBySeed } from "../../utilities";
+import { sendEvent } from "../../utilities/events";
 import {
   GAME_READY_EVENT,
   SCREEN_ELEMENT_NAME,

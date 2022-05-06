@@ -1,4 +1,4 @@
-import { getRandomNumber } from "../../../utils";
+import { getRandomNumber } from "../../../utilities";
 import { MATURITY_LIMIT, PLANT_ELEMENT } from "../../../constants/plant";
 import { GrowthRate, Position } from "../../../types";
 import { BaseElement } from "../BaseElement/BaseElement";

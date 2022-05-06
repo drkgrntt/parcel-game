@@ -1,7 +1,7 @@
 import { TIME_CHANGE_EVENT } from "../../../constants/map";
 import { TEMPLATE_SET_EVENT } from "../../../constants/baseElement";
-import { sendEvent } from "../../../utils/events";
-import { getTemplate } from "../../../utils/templates";
+import { sendEvent } from "../../../utilities/events";
+import { getTemplate } from "../../../utilities/templates";
 
 export abstract class BaseElement extends HTMLElement {
   name = "Element";
