@@ -103,6 +103,7 @@ export class Pawn extends BaseElement {
 
   handleTileSelection(event: CustomEvent<Tile>) {
     this.#activity = null;
+    this.#traveled = [];
     this.destination = event.detail.position;
   }
 
@@ -132,7 +133,7 @@ export class Pawn extends BaseElement {
     return nextTile ?? this.tile;
   }
 
-  hasTraveledTo([x, y]: Position): boolean {
+  #hasTraveledTo([x, y]: Position): boolean {
     return this.#traveled.some(([tx, ty]) => x === tx && y === ty);
   }
 
@@ -148,7 +149,7 @@ export class Pawn extends BaseElement {
     // TODO: Varying levels of passibility
     // Attempt to not change the y or x.
     // This helps diagonal pathing
-    if (!nextTile.isPassable || this.hasTraveledTo(nextTile.position)) {
+    if (!nextTile.isPassable || this.#hasTraveledTo(nextTile.position)) {
       const [dx, dy] = this.destination;
       if (tx === dx && ty === dy) {
         return this.stop();
@@ -163,7 +164,7 @@ export class Pawn extends BaseElement {
 
       if (
         !newNextTile?.isPassable ||
-        this.hasTraveledTo(newNextTile.position)
+        this.#hasTraveledTo(newNextTile.position)
       ) {
         // Adjust vertically when walking diagonally
         newNextTile = Object.values(this.tile.adjacentTiles).find(
@@ -174,7 +175,7 @@ export class Pawn extends BaseElement {
 
         if (
           !newNextTile?.isPassable ||
-          this.hasTraveledTo(newNextTile.position)
+          this.#hasTraveledTo(newNextTile.position)
         ) {
           // Adjust diagonally south when walking horizontally
           newNextTile = Object.values(this.tile.adjacentTiles).find(
@@ -185,7 +186,7 @@ export class Pawn extends BaseElement {
 
           if (
             !newNextTile?.isPassable ||
-            this.hasTraveledTo(newNextTile.position)
+            this.#hasTraveledTo(newNextTile.position)
           ) {
             // Adjust diagonally north when walking horizontally
             newNextTile = Object.values(this.tile.adjacentTiles).find(
@@ -196,7 +197,7 @@ export class Pawn extends BaseElement {
 
             if (
               !newNextTile?.isPassable ||
-              this.hasTraveledTo(newNextTile.position)
+              this.#hasTraveledTo(newNextTile.position)
             ) {
               // Adjust diagonally east when walking vertically
               newNextTile = Object.values(this.tile.adjacentTiles).find(
@@ -207,7 +208,7 @@ export class Pawn extends BaseElement {
 
               if (
                 !newNextTile?.isPassable ||
-                this.hasTraveledTo(newNextTile.position)
+                this.#hasTraveledTo(newNextTile.position)
               ) {
                 // Adjust diagonally west when walking vertically
                 newNextTile = Object.values(this.tile.adjacentTiles).find(
@@ -218,7 +219,7 @@ export class Pawn extends BaseElement {
 
                 if (
                   !newNextTile?.isPassable ||
-                  this.hasTraveledTo(newNextTile.position)
+                  this.#hasTraveledTo(newNextTile.position)
                 ) {
                   // We're lost.
                   return this.stop();
