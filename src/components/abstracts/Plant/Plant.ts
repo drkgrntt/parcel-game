@@ -39,7 +39,7 @@ export class Plant extends BaseElement {
 
   templateSetCallback(): void {
     super.templateSetCallback();
-    this.maturity = this.maturity;
+    this.maturity = this._maturity;
   }
 
   handleTimePassage(time: number): void {
@@ -51,9 +51,10 @@ export class Plant extends BaseElement {
   }
 
   #grow(): void {
-    if (this.maturity >= MATURITY_LIMIT) return;
+    console.log(this._maturity, MATURITY_LIMIT);
+    if (this._maturity >= MATURITY_LIMIT) return;
     const number = getRandomNumber(this.growthRate);
-    this.maturity += number;
+    this.maturity = this._maturity + number;
   }
 
   disconnectedCallback(): void {

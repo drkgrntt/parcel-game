@@ -53,6 +53,14 @@ export class Controls extends BaseElement {
     name.textContent = this.#selected.name;
     container.appendChild(name);
 
+    this.#selected.properties.forEach((property: string) => {
+      const p = document.createElement("p");
+      p.textContent = `${capitalizeFirstLetter(property)}: ${
+        this.#selected[property]
+      }`;
+      container.appendChild(p);
+    });
+
     this.#selected.actions.forEach((action: string) => {
       const button = document.createElement("button");
       button.textContent = capitalizeFirstLetter(action);

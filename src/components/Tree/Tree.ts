@@ -17,6 +17,7 @@ import { NEW_TEXT_EVENT } from "../../constants/text";
 
 export class Tree extends Plant {
   name = "Tree";
+  properties = ["maturity"];
   actions = ["harvest"];
 
   constructor(tile: Tile, initialMaturity: number = 0) {
@@ -26,7 +27,7 @@ export class Tree extends Plant {
   }
 
   get maturity(): number {
-    return this._maturity;
+    return Math.floor((this._maturity / MATURITY_LIMIT) * 100);
   }
 
   set maturity(value: number) {

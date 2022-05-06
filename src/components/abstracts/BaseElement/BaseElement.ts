@@ -5,7 +5,8 @@ import { getTemplate } from "../../../utilities/templates";
 
 export abstract class BaseElement extends HTMLElement {
   name = "Element";
-  actions = [];
+  properties: string[] = [];
+  actions: string[] = [];
 
   #template: HTMLTemplateElement;
   #eventListeners: [object: any, event: string, cb: (event: Event) => void][] =
