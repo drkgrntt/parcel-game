@@ -79,6 +79,8 @@ export class Controls extends BaseElement {
     this.shadowRoot
       .querySelector<HTMLParagraphElement>(TIME_SELECTOR)
       .querySelector("span").innerText = time.toString();
+
+    this.selected = this.#selected;
   }
 
   #addScrollListener() {
